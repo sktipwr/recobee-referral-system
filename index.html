@@ -31,23 +31,18 @@
       --info-dim: rgba(96, 165, 250, 0.12);
       --sidebar-width: 64px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      min-height: 100vh;
-      overflow-x: hidden;
+      background: var(--bg-primary); color: var(--text-primary);
+      min-height: 100vh; overflow-x: hidden;
     }
 
     /* ── Sidebar ── */
     .sidebar {
       position: fixed; left: 0; top: 0;
       width: var(--sidebar-width); height: 100vh;
-      background: var(--bg-secondary);
-      border-right: 1px solid var(--border);
+      background: var(--bg-secondary); border-right: 1px solid var(--border);
       display: flex; flex-direction: column; align-items: center;
       padding: 16px 0; z-index: 100;
     }
@@ -84,6 +79,7 @@
       padding: 12px 32px; border-bottom: 1px solid var(--border);
       background: var(--bg-secondary); position: sticky; top: 0; z-index: 50;
     }
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
     .topbar-right { display: flex; align-items: center; gap: 12px; }
     .btn-icon {
       width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
@@ -114,6 +110,17 @@
       font-weight: 700; font-size: 11px;
     }
 
+    /* ── Demo toggle ── */
+    .demo-toggle {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 6px;
+      border: 1px dashed var(--accent-border); background: var(--accent-dim);
+      color: var(--accent); font-size: 11px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .demo-toggle:hover { background: var(--accent-border); }
+    .demo-toggle i { font-size: 10px; }
+
     /* ── Page ── */
     .page-content { padding: 24px 32px 48px; max-width: 1400px; }
     .breadcrumb {
@@ -131,15 +138,12 @@
     }
     .page-title { font-size: 22px; font-weight: 700; margin: 0; }
 
-    /* ── ZONE 1: Compact Referral Link Bar ── */
+    /* ── Compact Referral Link Bar ── */
     .ref-link-bar {
       display: flex; align-items: center; gap: 10px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 8px 8px 8px 16px;
-      transition: border-color 0.2s;
-      flex-shrink: 0;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 8px 8px 8px 16px;
+      transition: border-color 0.2s; flex-shrink: 0;
     }
     .ref-link-bar:hover { border-color: var(--accent-border); }
     .ref-link-bar .link-label {
@@ -152,8 +156,7 @@
       font-family: 'Inter', monospace; font-size: 13px; font-weight: 500;
       color: var(--text-primary); white-space: nowrap;
       background: var(--bg-card-inner); border-radius: 6px;
-      padding: 6px 12px; border: 1px solid var(--border);
-      user-select: all; cursor: text;
+      padding: 6px 12px; border: 1px solid var(--border); user-select: all; cursor: text;
     }
     .ref-link-bar .copy-btn {
       padding: 6px 14px; border-radius: 6px; border: 1px solid var(--accent-border);
@@ -164,6 +167,7 @@
     }
     .ref-link-bar .copy-btn:hover { background: var(--accent); color: #000; }
     .ref-link-bar .copy-btn.copied { background: var(--success); border-color: var(--success); color: #000; }
+    .share-dropdown-wrap { position: relative; }
     .ref-link-bar .share-toggle {
       padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);
       background: var(--bg-card-inner); color: var(--text-secondary);
@@ -171,17 +175,12 @@
       display: flex; align-items: center; gap: 5px;
     }
     .ref-link-bar .share-toggle:hover { background: var(--bg-hover); color: var(--text-primary); }
-
-    /* Share dropdown */
-    .share-dropdown-wrap { position: relative; }
     .share-dropdown {
       position: absolute; top: calc(100% + 8px); right: 0;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 8px;
-      display: flex; gap: 6px; z-index: 60;
+      border-radius: 10px; padding: 8px; display: flex; gap: 6px; z-index: 60;
       opacity: 0; pointer-events: none; transform: translateY(-4px);
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: all 0.2s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
     .share-dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .share-pill {
@@ -196,6 +195,74 @@
     .share-pill.email:hover { color: var(--info); }
     .share-pill.twitter:hover { color: #1DA1F2; }
     .share-pill.linkedin:hover { color: #0A66C2; }
+
+    /* ── Onboarding Banner (first-time users) ── */
+    .onboarding-banner {
+      display: none;
+      background: linear-gradient(135deg, rgba(232,168,56,0.08) 0%, rgba(232,168,56,0.02) 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: 14px; padding: 28px 32px;
+      margin-bottom: 24px; position: relative; overflow: hidden;
+    }
+    .onboarding-banner::before {
+      content: ''; position: absolute; top: -40px; right: -20px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,168,56,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .onboarding-banner .ob-grid {
+      display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    }
+    .onboarding-banner .ob-content { position: relative; z-index: 1; }
+    .onboarding-banner .ob-title {
+      font-size: 18px; font-weight: 700; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .onboarding-banner .ob-title i { color: var(--accent); }
+    .onboarding-banner .ob-desc {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.6; max-width: 560px;
+    }
+    .onboarding-banner .ob-steps {
+      display: flex; gap: 24px; margin-top: 20px;
+    }
+    .onboarding-banner .ob-step {
+      display: flex; align-items: flex-start; gap: 10px; flex: 1;
+    }
+    .ob-step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: var(--accent); flex-shrink: 0;
+    }
+    .ob-step-text { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+    .ob-step-text strong { color: var(--text-primary); display: block; font-size: 13px; margin-bottom: 1px; }
+    .onboarding-banner .ob-cta {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      position: relative; z-index: 1;
+    }
+    .ob-cta-btn {
+      padding: 12px 28px; border-radius: 10px; border: none;
+      background: var(--accent); color: #000;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s; white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ob-cta-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .ob-cta-sub { font-size: 11px; color: var(--text-muted); }
+    [data-state="new"] .onboarding-banner { display: block; }
+
+    /* ── Rules chips ── */
+    .rules-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .rule-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 8px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      font-size: 11px; color: var(--text-secondary);
+      transition: all 0.2s; cursor: default;
+    }
+    .rule-chip:hover { border-color: var(--accent-border); }
+    .rule-chip i { color: var(--accent); font-size: 10px; }
+    .rule-chip strong { color: var(--text-primary); font-weight: 600; }
 
     /* ── Stats Grid ── */
     .stats-grid {
@@ -217,8 +284,7 @@
     .stat-card-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
     .stat-card-sub span { color: var(--success); font-weight: 600; }
     .stat-card-sub .warn { color: var(--warning); }
-
-    /* Context hint inside stat cards */
+    .stat-card-sub .encourage { color: var(--accent); font-weight: 500; }
     .stat-hint {
       display: inline-flex; align-items: center; gap: 4px;
       margin-top: 6px; padding: 3px 8px; border-radius: 4px;
@@ -233,7 +299,7 @@
       border-radius: 12px; overflow: hidden; margin-bottom: 20px;
     }
     .card-header {
-      padding: 16px 24px; background: var(--bg-secondary);
+      padding: 14px 24px; background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
       font-size: 14px; font-weight: 600;
       display: flex; align-items: center; justify-content: space-between;
@@ -243,7 +309,7 @@
     .card-header-right { display: flex; align-items: center; gap: 8px; }
     .card-body { padding: 24px; }
 
-    /* ── Tab pills for card headers ── */
+    /* Tab pills */
     .header-tab {
       padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border);
       background: transparent; color: var(--text-muted);
@@ -252,11 +318,8 @@
     .header-tab:hover { color: var(--text-secondary); background: var(--bg-hover); }
     .header-tab.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-border); }
 
-    /* ── ZONE 2: Milestones — the hero section ── */
-    .milestones-hero {
-      display: grid; grid-template-columns: 1fr; gap: 0;
-      position: relative;
-    }
+    /* ── Milestones ── */
+    .milestones-hero { position: relative; }
     .milestone-track {
       display: flex; align-items: stretch; gap: 0;
       padding: 0; overflow-x: auto;
@@ -264,29 +327,21 @@
     .milestone-node {
       flex: 1; min-width: 0;
       display: flex; flex-direction: column; align-items: center;
-      padding: 24px 16px 20px;
-      position: relative; text-align: center;
+      padding: 24px 16px 20px; position: relative; text-align: center;
       transition: background 0.2s;
     }
     .milestone-node:hover { background: rgba(255,255,255,0.015); }
-
-    /* Connector line between nodes */
     .milestone-node:not(:last-child)::after {
-      content: '';
-      position: absolute; top: 42px; right: -1px;
-      width: calc(50%); height: 2px;
-      background: var(--border); z-index: 1;
+      content: ''; position: absolute; top: 42px; right: -1px;
+      width: 50%; height: 2px; background: var(--border); z-index: 1;
     }
     .milestone-node:not(:first-child)::before {
-      content: '';
-      position: absolute; top: 42px; left: -1px;
-      width: calc(50%); height: 2px;
-      background: var(--border); z-index: 1;
+      content: ''; position: absolute; top: 42px; left: -1px;
+      width: 50%; height: 2px; background: var(--border); z-index: 1;
     }
     .milestone-node.done:not(:last-child)::after,
     .milestone-node.done + .milestone-node::before { background: var(--success); }
     .milestone-node.done + .milestone-node.active::before { background: var(--accent); }
-
     .milestone-icon-wrap {
       width: 44px; height: 44px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
@@ -294,30 +349,25 @@
       margin-bottom: 12px;
     }
     .milestone-node.done .milestone-icon-wrap {
-      background: var(--success-dim); border: 1.5px solid rgba(74, 222, 128, 0.3);
-      color: var(--success);
+      background: var(--success-dim); border: 1.5px solid rgba(74, 222, 128, 0.3); color: var(--success);
     }
     .milestone-node.active .milestone-icon-wrap {
       background: var(--accent-dim); border: 1.5px solid var(--accent-border);
       color: var(--accent); animation: pulse-glow 2s infinite;
     }
     .milestone-node.locked .milestone-icon-wrap {
-      background: var(--bg-card-inner); border: 1.5px solid var(--border);
-      color: var(--text-muted);
+      background: var(--bg-card-inner); border: 1.5px solid var(--border); color: var(--text-muted);
     }
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 0 0 rgba(232, 168, 56, 0); }
       50% { box-shadow: 0 0 14px 3px rgba(232, 168, 56, 0.2); }
     }
-
     .milestone-label { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
     .milestone-node.done .milestone-label { color: var(--success); }
     .milestone-node.active .milestone-label { color: var(--accent); }
     .milestone-node.locked .milestone-label { color: var(--text-muted); }
-
     .milestone-reward { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; }
     .milestone-node.locked .milestone-reward { color: var(--text-muted); }
-
     .milestone-progress-mini {
       width: 60%; height: 4px; background: var(--bg-primary);
       border-radius: 2px; overflow: hidden;
@@ -328,17 +378,47 @@
     .milestone-node.done .fill { background: var(--success); }
     .milestone-node.active .fill { background: var(--accent); }
     .milestone-node.locked .fill { background: var(--text-muted); opacity: 0.3; }
-
-    .milestone-count {
-      font-size: 10px; font-weight: 600; margin-top: 6px; color: var(--text-muted);
-    }
+    .milestone-count { font-size: 10px; font-weight: 600; margin-top: 6px; color: var(--text-muted); }
     .milestone-node.active .milestone-count { color: var(--accent); }
-
-    /* ── ZONE 3: Two-col Activity + How it works ── */
-    .zone-3 {
-      display: grid; grid-template-columns: 3fr 2fr;
-      gap: 20px; margin-bottom: 20px;
+    /* "Start here" indicator for first-time users */
+    .milestone-start-badge {
+      display: none; position: absolute; top: 6px;
+      padding: 2px 10px; border-radius: 10px;
+      background: var(--accent); color: #000;
+      font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
     }
+    [data-state="new"] .milestone-start-badge { display: block; }
+
+    /* ── Bottom Row: Tabbed Card (History + How It Works) ── */
+    .bottom-card { margin-bottom: 20px; }
+
+    /* Inner tabs for the combined card */
+    .inner-tabs { display: flex; gap: 0; }
+    .inner-tab {
+      padding: 12px 20px; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s; background: none; border-top: none;
+      border-left: none; border-right: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .inner-tab:hover { color: var(--text-secondary); }
+    .inner-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .inner-tab .tab-count {
+      padding: 1px 7px; border-radius: 10px;
+      background: var(--bg-card-inner); font-size: 10px; font-weight: 700;
+    }
+    .inner-tab.active .tab-count { background: var(--accent-dim); color: var(--accent); }
+    .tab-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+    .tab-bar-right { display: flex; align-items: center; gap: 8px; }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
     /* History table */
     .table-wrap { overflow-x: auto; }
@@ -354,7 +434,6 @@
     }
     table tr:last-child td { border-bottom: none; }
     table tr:hover td { background: rgba(255, 255, 255, 0.02); }
-
     .badge {
       display: inline-flex; align-items: center; gap: 5px;
       padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
@@ -364,54 +443,72 @@
     .badge-danger { background: var(--danger-dim); color: var(--danger); }
     .credit-plus { color: var(--success); font-weight: 600; }
 
-    /* ── How It Works — compact sidebar ── */
-    .how-steps { display: flex; flex-direction: column; gap: 0; }
-    .how-step {
-      display: flex; gap: 14px; align-items: flex-start;
-      padding: 16px 0; border-bottom: 1px solid var(--border);
+    /* Empty state for history */
+    .empty-history {
+      display: none; text-align: center; padding: 48px 24px;
     }
-    .how-step:last-child { border-bottom: none; }
-    .how-step-num {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--bg-card-inner); border: 1px solid var(--border);
+    .empty-history .empty-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 800; color: var(--accent); flex-shrink: 0;
+      margin: 0 auto 16px; font-size: 24px; color: var(--accent);
     }
-    .how-step-content { flex: 1; }
-    .how-step-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-    .how-step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-    .how-step-tag {
-      display: inline-flex; align-items: center; gap: 4px;
-      margin-top: 5px; padding: 2px 8px; border-radius: 12px;
-      background: var(--accent-dim); color: var(--accent);
-      font-size: 10px; font-weight: 700;
+    .empty-history .empty-title {
+      font-size: 15px; font-weight: 600; margin-bottom: 6px;
     }
-
-    /* ── Rules — inline chips above the fold ── */
-    .rules-bar {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-bottom: 24px;
+    .empty-history .empty-desc {
+      font-size: 13px; color: var(--text-muted); max-width: 340px;
+      margin: 0 auto 16px; line-height: 1.6;
     }
-    .rule-chip {
+    .empty-history .empty-cta {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 12px; border-radius: 8px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      font-size: 11px; color: var(--text-secondary);
-      transition: all 0.2s; cursor: default;
+      padding: 8px 20px; border-radius: 8px;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      color: var(--accent); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; text-decoration: none;
     }
-    .rule-chip:hover { border-color: var(--accent-border); }
-    .rule-chip i { color: var(--accent); font-size: 10px; }
-    .rule-chip strong { color: var(--text-primary); font-weight: 600; }
+    .empty-history .empty-cta:hover { background: var(--accent); color: #000; }
+    [data-state="new"] .empty-history { display: block; }
+    [data-state="new"] .table-wrap { display: none; }
+
+    /* How It Works panel */
+    .how-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .how-card {
+      padding: 28px 24px; text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .how-card:last-child { border-right: none; }
+    .how-card:hover { background: rgba(255,255,255,0.015); }
+    .how-card-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--accent);
+      margin: 0 auto 14px;
+    }
+    .how-card-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .how-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px; }
+    .how-card-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 12px;
+      background: var(--success-dim); color: var(--success);
+      font-size: 11px; font-weight: 700;
+    }
 
     /* ── Responsive ── */
-    @media (max-width: 1200px) {
-      .zone-3 { grid-template-columns: 1fr; }
-    }
     @media (max-width: 1024px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .page-header-row { flex-direction: column; align-items: flex-start; }
       .ref-link-bar { width: 100%; flex-wrap: wrap; }
-      .rules-bar { gap: 6px; }
+      .how-grid { grid-template-columns: 1fr; }
+      .how-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .how-card:last-child { border-bottom: none; }
+      .onboarding-banner .ob-grid { grid-template-columns: 1fr; }
+      .onboarding-banner .ob-steps { flex-direction: column; gap: 12px; }
     }
     @media (max-width: 768px) {
       .sidebar { display: none; }
@@ -440,7 +537,6 @@
     .delay-3 { animation-delay: 0.15s; }
     .delay-4 { animation-delay: 0.2s; }
     .delay-5 { animation-delay: 0.25s; }
-    .delay-6 { animation-delay: 0.3s; }
 
     /* ── Toast ── */
     .toast {
@@ -487,7 +583,12 @@
 
     <!-- Top Bar -->
     <header class="topbar">
-      <div></div>
+      <div class="topbar-left">
+        <button class="demo-toggle" id="demoToggle" onclick="toggleDemoState()">
+          <i class="fas fa-flask-vial"></i>
+          <span id="demoLabel">Viewing: New User</span>
+        </button>
+      </div>
       <div class="topbar-right">
         <button class="btn-icon"><i class="fas fa-gear"></i></button>
         <button class="btn-credits"><span class="dot"></span> Credits</button>
@@ -496,7 +597,7 @@
     </header>
 
     <!-- Page Content -->
-    <div class="page-content">
+    <div class="page-content" id="pageContent" data-state="new">
 
       <!-- Breadcrumb -->
       <div class="breadcrumb animate-in">
@@ -505,7 +606,7 @@
         <span>Referral Program</span>
       </div>
 
-      <!-- ═══ ZONE 1: Title + Compact Link Bar ═══ -->
+      <!-- Header + Link bar -->
       <div class="page-header-row animate-in delay-1">
         <h1 class="page-title">Refer & Earn Credits</h1>
         <div class="ref-link-bar">
@@ -528,7 +629,37 @@
         </div>
       </div>
 
-      <!-- Rules as inline chips — visible before first scroll -->
+      <!-- ═══ ONBOARDING BANNER — only for first-time users ═══ -->
+      <div class="onboarding-banner animate-in delay-2">
+        <div class="ob-grid">
+          <div class="ob-content">
+            <div class="ob-title"><i class="fas fa-gift"></i> Earn free credits by inviting colleagues</div>
+            <div class="ob-desc">
+              Share your unique link with people in the entertainment industry. When they sign up and run their first analysis, you both earn credits.
+            </div>
+            <div class="ob-steps">
+              <div class="ob-step">
+                <div class="ob-step-num">1</div>
+                <div class="ob-step-text"><strong>Share your link</strong>Copy it above or use the share button</div>
+              </div>
+              <div class="ob-step">
+                <div class="ob-step-num">2</div>
+                <div class="ob-step-text"><strong>They sign up</strong>You both get <span style="color:var(--success);font-weight:600;">+1 credit</span></div>
+              </div>
+              <div class="ob-step">
+                <div class="ob-step-num">3</div>
+                <div class="ob-step-text"><strong>They analyze</strong>You get <span style="color:var(--success);font-weight:600;">+2 bonus credits</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-cta">
+            <button class="ob-cta-btn" onclick="copyLink()"><i class="fas fa-copy"></i> Copy Your Link</button>
+            <div class="ob-cta-sub">5 referrals = 3 bonus credits</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rules chips -->
       <div class="rules-bar animate-in delay-2">
         <div class="rule-chip"><i class="fas fa-calendar-day"></i> <strong>10</strong> referrals/month</div>
         <div class="rule-chip"><i class="fas fa-infinity"></i> <strong>50</strong> lifetime cap</div>
@@ -539,90 +670,52 @@
       </div>
 
       <!-- Stats -->
-      <div class="stats-grid animate-in delay-2">
-        <div class="stat-card">
-          <div class="stat-card-label"><i class="fas fa-users"></i> Total Referrals</div>
-          <div class="stat-card-value">7</div>
-          <div class="stat-card-sub"><span>+2 this month</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label"><i class="fas fa-coins"></i> Credits Earned</div>
-          <div class="stat-card-value">24</div>
-          <div class="stat-card-sub">Referrals + milestones</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label"><i class="fas fa-clock"></i> Pending</div>
-          <div class="stat-card-value">2</div>
-          <div class="stat-card-sub"><span class="warn">Awaiting first analysis</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label"><i class="fas fa-calendar"></i> Monthly Left</div>
-          <div class="stat-card-value">8</div>
-          <div class="stat-card-sub">of 10 this month</div>
-          <div class="stat-hint"><i class="fas fa-rotate"></i> Resets on 1st of each month</div>
-        </div>
+      <div class="stats-grid animate-in delay-3" id="statsGrid">
+        <!-- Populated by JS based on state -->
       </div>
 
-      <!-- ═══ ZONE 2: Milestone Progress — the hero ═══ -->
-      <div class="card animate-in delay-3">
+      <!-- ═══ Milestones ═══ -->
+      <div class="card animate-in delay-4">
         <div class="card-header">
           <div class="card-header-left"><i class="fas fa-trophy"></i> Milestone Progress</div>
-          <div class="card-header-right">
-            <span style="font-size:11px; color:var(--text-muted); font-weight:400;">Next bonus in <strong style="color:var(--accent);">3 referrals</strong></span>
-          </div>
+          <div class="card-header-right" id="milestoneHint"></div>
         </div>
         <div class="milestones-hero">
-          <div class="milestone-track">
-
-            <div class="milestone-node done">
-              <div class="milestone-icon-wrap"><i class="fas fa-check"></i></div>
-              <div class="milestone-label">5 Referrals</div>
-              <div class="milestone-reward">+3 bonus credits</div>
-              <div class="milestone-progress-mini"><div class="fill" style="width:100%"></div></div>
-              <div class="milestone-count">Claimed</div>
-            </div>
-
-            <div class="milestone-node active">
-              <div class="milestone-icon-wrap"><i class="fas fa-star"></i></div>
-              <div class="milestone-label">10 Referrals</div>
-              <div class="milestone-reward">+5 bonus credits</div>
-              <div class="milestone-progress-mini"><div class="fill" style="width:70%"></div></div>
-              <div class="milestone-count">7 / 10</div>
-            </div>
-
-            <div class="milestone-node locked">
-              <div class="milestone-icon-wrap"><i class="fas fa-crown"></i></div>
-              <div class="milestone-label">20 Referrals</div>
-              <div class="milestone-reward">+10 bonus credits</div>
-              <div class="milestone-progress-mini"><div class="fill" style="width:35%"></div></div>
-              <div class="milestone-count">7 / 20</div>
-            </div>
-
-            <div class="milestone-node locked">
-              <div class="milestone-icon-wrap"><i class="fas fa-gem"></i></div>
-              <div class="milestone-label">50 Referrals</div>
-              <div class="milestone-reward">VIP tier unlock</div>
-              <div class="milestone-progress-mini"><div class="fill" style="width:14%"></div></div>
-              <div class="milestone-count">7 / 50</div>
-            </div>
-
+          <div class="milestone-track" id="milestoneTrack">
+            <!-- Populated by JS based on state -->
           </div>
         </div>
       </div>
 
-      <!-- ═══ ZONE 3: History (prominent) + How it works (compact sidebar) ═══ -->
-      <div class="zone-3 animate-in delay-4">
-
-        <!-- Referral History — now prominent -->
-        <div class="card" style="margin-bottom:0;">
-          <div class="card-header">
-            <div class="card-header-left"><i class="fas fa-clock-rotate-left"></i> Referral History</div>
-            <div class="card-header-right">
-              <button class="header-tab active" onclick="filterHistory('all', this)">All</button>
-              <button class="header-tab" onclick="filterHistory('completed', this)">Completed</button>
-              <button class="header-tab" onclick="filterHistory('pending', this)">Pending</button>
-            </div>
+      <!-- ═══ BOTTOM: Tabbed Card — Activity + How It Works ═══ -->
+      <div class="card bottom-card animate-in delay-5">
+        <div class="tab-bar">
+          <div class="inner-tabs" id="bottomTabs">
+            <button class="inner-tab" data-tab="activity" onclick="switchBottomTab('activity', this)">
+              <i class="fas fa-clock-rotate-left"></i> Activity
+              <span class="tab-count" id="activityCount">8</span>
+            </button>
+            <button class="inner-tab" data-tab="howitworks" onclick="switchBottomTab('howitworks', this)">
+              <i class="fas fa-bolt"></i> How It Works
+            </button>
           </div>
+          <div class="tab-bar-right" id="historyFilters">
+            <button class="header-tab active" onclick="filterHistory('all', this)">All</button>
+            <button class="header-tab" onclick="filterHistory('completed', this)">Completed</button>
+            <button class="header-tab" onclick="filterHistory('pending', this)">Pending</button>
+          </div>
+        </div>
+
+        <!-- Activity Panel -->
+        <div class="tab-panel" id="panel-activity">
+          <!-- Empty state (shown for new users) -->
+          <div class="empty-history">
+            <div class="empty-icon"><i class="fas fa-paper-plane"></i></div>
+            <div class="empty-title">No referrals yet</div>
+            <div class="empty-desc">Share your link with a colleague to get started. Your first referral earns you an instant credit.</div>
+            <button class="empty-cta" onclick="copyLink()"><i class="fas fa-copy"></i> Copy referral link</button>
+          </div>
+          <!-- Table (shown for active users) -->
           <div class="table-wrap">
             <table id="historyTable">
               <thead>
@@ -634,93 +727,41 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-status="pending">
-                  <td>15/03/2026</td>
-                  <td>a****@gmail.com</td>
-                  <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td>
-                  <td class="credit-plus">+1</td>
-                </tr>
-                <tr data-status="pending">
-                  <td>12/03/2026</td>
-                  <td>r****@outlook.com</td>
-                  <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td>
-                  <td class="credit-plus">+1</td>
-                </tr>
-                <tr data-status="completed">
-                  <td>08/03/2026</td>
-                  <td>s****@yahoo.com</td>
-                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                  <td class="credit-plus">+3</td>
-                </tr>
-                <tr data-status="completed">
-                  <td>01/03/2026</td>
-                  <td>m****@gmail.com</td>
-                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                  <td class="credit-plus">+3</td>
-                </tr>
-                <tr data-status="completed">
-                  <td>22/02/2026</td>
-                  <td>d****@proton.me</td>
-                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                  <td class="credit-plus">+3</td>
-                </tr>
-                <tr data-status="completed">
-                  <td>15/02/2026</td>
-                  <td>p****@gmail.com</td>
-                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                  <td class="credit-plus">+3</td>
-                </tr>
-                <tr data-status="completed">
-                  <td>02/02/2026</td>
-                  <td>k****@icloud.com</td>
-                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                  <td class="credit-plus">+3</td>
-                </tr>
-                <tr data-status="expired">
-                  <td>18/01/2026</td>
-                  <td>j****@gmail.com</td>
-                  <td><span class="badge badge-danger"><i class="fas fa-times"></i> Expired</span></td>
-                  <td style="color: var(--text-muted);">0</td>
-                </tr>
+                <tr data-status="pending"><td>15/03/2026</td><td>a****@gmail.com</td><td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td><td class="credit-plus">+1</td></tr>
+                <tr data-status="pending"><td>12/03/2026</td><td>r****@outlook.com</td><td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td><td class="credit-plus">+1</td></tr>
+                <tr data-status="completed"><td>08/03/2026</td><td>s****@yahoo.com</td><td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td><td class="credit-plus">+3</td></tr>
+                <tr data-status="completed"><td>01/03/2026</td><td>m****@gmail.com</td><td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td><td class="credit-plus">+3</td></tr>
+                <tr data-status="completed"><td>22/02/2026</td><td>d****@proton.me</td><td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td><td class="credit-plus">+3</td></tr>
+                <tr data-status="completed"><td>15/02/2026</td><td>p****@gmail.com</td><td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td><td class="credit-plus">+3</td></tr>
+                <tr data-status="completed"><td>02/02/2026</td><td>k****@icloud.com</td><td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td><td class="credit-plus">+3</td></tr>
+                <tr data-status="expired"><td>18/01/2026</td><td>j****@gmail.com</td><td><span class="badge badge-danger"><i class="fas fa-times"></i> Expired</span></td><td style="color:var(--text-muted);">0</td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- How It Works — compact -->
-        <div class="card" style="margin-bottom:0;">
-          <div class="card-header">
-            <div class="card-header-left"><i class="fas fa-bolt"></i> How It Works</div>
-          </div>
-          <div class="card-body" style="padding: 8px 24px 16px;">
-            <div class="how-steps">
-              <div class="how-step">
-                <div class="how-step-num">1</div>
-                <div class="how-step-content">
-                  <div class="how-step-title">Share Your Link</div>
-                  <div class="how-step-desc">Send your unique referral link to colleagues in the entertainment industry.</div>
-                </div>
-              </div>
-              <div class="how-step">
-                <div class="how-step-num">2</div>
-                <div class="how-step-content">
-                  <div class="how-step-title">They Sign Up</div>
-                  <div class="how-step-desc">When someone registers using your link, you both earn credits.</div>
-                  <div class="how-step-tag"><i class="fas fa-coins"></i> +1 credit each</div>
-                </div>
-              </div>
-              <div class="how-step">
-                <div class="how-step-num">3</div>
-                <div class="how-step-content">
-                  <div class="how-step-title">First Analysis</div>
-                  <div class="how-step-desc">After their first analysis, you earn a bonus.</div>
-                  <div class="how-step-tag"><i class="fas fa-coins"></i> +2 bonus for you</div>
-                </div>
-              </div>
+        <!-- How It Works Panel -->
+        <div class="tab-panel" id="panel-howitworks">
+          <div class="how-grid">
+            <div class="how-card">
+              <div class="how-card-num">1</div>
+              <div class="how-card-title">Share Your Link</div>
+              <div class="how-card-desc">Copy your unique referral link and share it with colleagues in the entertainment industry via any channel.</div>
+            </div>
+            <div class="how-card">
+              <div class="how-card-num">2</div>
+              <div class="how-card-title">They Sign Up</div>
+              <div class="how-card-desc">When someone creates a RecoBee account using your link, you both receive credits instantly.</div>
+              <div class="how-card-tag"><i class="fas fa-coins"></i> +1 credit each</div>
+            </div>
+            <div class="how-card">
+              <div class="how-card-num">3</div>
+              <div class="how-card-title">They Run an Analysis</div>
+              <div class="how-card-desc">Once your referral completes their first script, trailer, or reel analysis, you earn bonus credits.</div>
+              <div class="how-card-tag"><i class="fas fa-coins"></i> +2 bonus for you</div>
             </div>
           </div>
         </div>
-
       </div>
 
     </div>
@@ -733,7 +774,122 @@
   </div>
 
   <script>
-    // Copy referral link
+    // ── State configs ──
+    const STATES = {
+      new: {
+        referrals: 0, credits: 0, pending: 0, monthlyLeft: 10,
+        defaultTab: 'howitworks',
+        stats: [
+          { icon: 'fa-users', label: 'Total Referrals', value: '0', sub: '<span class="encourage">Share your link to get started</span>' },
+          { icon: 'fa-coins', label: 'Credits Earned', value: '0', sub: '<span class="encourage">First referral = instant credit</span>' },
+          { icon: 'fa-clock', label: 'Pending', value: '0', sub: 'No pending referrals' },
+          { icon: 'fa-calendar', label: 'Monthly Left', value: '10', sub: 'of 10 this month', hint: '<i class="fas fa-rotate"></i> Resets on 1st of each month' }
+        ],
+        milestones: [
+          { state: 'active', icon: 'fa-seedling', label: '5 Referrals', reward: '+3 bonus credits', pct: 0, count: '0 / 5', startBadge: true },
+          { state: 'locked', icon: 'fa-star', label: '10 Referrals', reward: '+5 bonus credits', pct: 0, count: '0 / 10' },
+          { state: 'locked', icon: 'fa-crown', label: '20 Referrals', reward: '+10 bonus credits', pct: 0, count: '0 / 20' },
+          { state: 'locked', icon: 'fa-gem', label: '50 Referrals', reward: 'VIP tier unlock', pct: 0, count: '0 / 50' }
+        ],
+        milestoneHint: 'Share your first link to begin <i class="fas fa-arrow-right" style="font-size:10px;margin-left:4px;"></i>'
+      },
+      active: {
+        referrals: 7, credits: 24, pending: 2, monthlyLeft: 8,
+        defaultTab: 'activity',
+        stats: [
+          { icon: 'fa-users', label: 'Total Referrals', value: '7', sub: '<span>+2 this month</span>' },
+          { icon: 'fa-coins', label: 'Credits Earned', value: '24', sub: 'Referrals + milestones' },
+          { icon: 'fa-clock', label: 'Pending', value: '2', sub: '<span class="warn">Awaiting first analysis</span>' },
+          { icon: 'fa-calendar', label: 'Monthly Left', value: '8', sub: 'of 10 this month', hint: '<i class="fas fa-rotate"></i> Resets on 1st of each month' }
+        ],
+        milestones: [
+          { state: 'done', icon: 'fa-check', label: '5 Referrals', reward: '+3 bonus credits', pct: 100, count: 'Claimed' },
+          { state: 'active', icon: 'fa-star', label: '10 Referrals', reward: '+5 bonus credits', pct: 70, count: '7 / 10' },
+          { state: 'locked', icon: 'fa-crown', label: '20 Referrals', reward: '+10 bonus credits', pct: 35, count: '7 / 20' },
+          { state: 'locked', icon: 'fa-gem', label: '50 Referrals', reward: 'VIP tier unlock', pct: 14, count: '7 / 50' }
+        ],
+        milestoneHint: 'Next bonus in <strong style="color:var(--accent);">3 referrals</strong>'
+      }
+    };
+
+    let currentState = 'new';
+
+    function renderState(state) {
+      const cfg = STATES[state];
+      const page = document.getElementById('pageContent');
+      page.setAttribute('data-state', state);
+
+      // Stats
+      const grid = document.getElementById('statsGrid');
+      grid.innerHTML = cfg.stats.map(s => `
+        <div class="stat-card">
+          <div class="stat-card-label"><i class="fas ${s.icon}"></i> ${s.label}</div>
+          <div class="stat-card-value">${s.value}</div>
+          <div class="stat-card-sub">${s.sub}</div>
+          ${s.hint ? `<div class="stat-hint">${s.hint}</div>` : ''}
+        </div>
+      `).join('');
+
+      // Milestones
+      const track = document.getElementById('milestoneTrack');
+      track.innerHTML = cfg.milestones.map(m => `
+        <div class="milestone-node ${m.state}">
+          ${m.startBadge ? '<div class="milestone-start-badge">Start here</div>' : ''}
+          <div class="milestone-icon-wrap"><i class="fas ${m.icon}"></i></div>
+          <div class="milestone-label">${m.label}</div>
+          <div class="milestone-reward">${m.reward}</div>
+          <div class="milestone-progress-mini"><div class="fill" style="width:${m.pct}%"></div></div>
+          <div class="milestone-count">${m.count}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('milestoneHint').innerHTML =
+        `<span style="font-size:11px;color:var(--text-muted);font-weight:400;">${cfg.milestoneHint}</span>`;
+
+      // Activity count
+      document.getElementById('activityCount').textContent = state === 'new' ? '0' : '8';
+
+      // History filters visibility
+      document.getElementById('historyFilters').style.display = state === 'new' ? 'none' : 'flex';
+
+      // Bottom tab default
+      switchBottomTab(cfg.defaultTab, document.querySelector(`.inner-tab[data-tab="${cfg.defaultTab}"]`));
+
+      // Demo label
+      document.getElementById('demoLabel').textContent = state === 'new' ? 'Viewing: New User' : 'Viewing: Active User (7 referrals)';
+    }
+
+    function toggleDemoState() {
+      currentState = currentState === 'new' ? 'active' : 'new';
+      renderState(currentState);
+    }
+
+    // ── Bottom tabs ──
+    function switchBottomTab(tab, btn) {
+      document.querySelectorAll('.inner-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      else document.querySelector(`.inner-tab[data-tab="${tab}"]`).classList.add('active');
+      document.getElementById(`panel-${tab}`).classList.add('active');
+
+      // Show/hide history filters only on activity tab
+      const filters = document.getElementById('historyFilters');
+      const isNew = document.getElementById('pageContent').getAttribute('data-state') === 'new';
+      filters.style.display = (tab === 'activity' && !isNew) ? 'flex' : 'none';
+    }
+
+    // ── History filter ──
+    function filterHistory(status, btn) {
+      document.querySelectorAll('#historyFilters .header-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#historyTable tbody tr').forEach(row => {
+        if (status === 'all') row.style.display = '';
+        else if (status === 'completed') row.style.display = row.dataset.status === 'completed' ? '' : 'none';
+        else if (status === 'pending') row.style.display = row.dataset.status === 'pending' ? '' : 'none';
+      });
+    }
+
+    // ── Copy link ──
     function copyLink() {
       const link = 'https://recobee.ai/r/RB-DEM0-7X9K';
       navigator.clipboard.writeText(link).then(() => {
@@ -741,74 +897,32 @@
         btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
         btn.classList.add('copied');
         showToast('Link copied to clipboard!');
-        setTimeout(() => {
-          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-          btn.classList.remove('copied');
-        }, 2000);
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copy'; btn.classList.remove('copied'); }, 2000);
       });
     }
 
-    // Share dropdown
-    function toggleShare() {
-      const dd = document.getElementById('shareDropdown');
-      dd.classList.toggle('open');
-    }
-
-    // Close share dropdown on outside click
+    // ── Share ──
+    function toggleShare() { document.getElementById('shareDropdown').classList.toggle('open'); }
     document.addEventListener('click', (e) => {
-      const dd = document.getElementById('shareDropdown');
-      if (!e.target.closest('.share-dropdown-wrap')) {
-        dd.classList.remove('open');
-      }
+      if (!e.target.closest('.share-dropdown-wrap')) document.getElementById('shareDropdown').classList.remove('open');
     });
-
-    // Share functions
     const referralLink = 'https://recobee.ai/r/RB-DEM0-7X9K';
     const shareText = 'Check out RecoBee — AI-powered content analysis for scripts, trailers, reels & more. Sign up with my link and we both get free credits!';
+    function shareWhatsApp(e) { e.preventDefault(); window.open(`https://wa.me/?text=${encodeURIComponent(shareText+'\n\n'+referralLink)}`, '_blank'); }
+    function shareEmail(e) { e.preventDefault(); window.open(`mailto:?subject=${encodeURIComponent('Try RecoBee — Free Credits Inside')}&body=${encodeURIComponent(shareText+'\n\n'+referralLink)}`, '_blank'); }
+    function shareTwitter(e) { e.preventDefault(); window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(referralLink)}`, '_blank'); }
+    function shareLinkedIn(e) { e.preventDefault(); window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(referralLink)}`, '_blank'); }
 
-    function shareWhatsApp(e) {
-      e.preventDefault();
-      window.open(`https://wa.me/?text=${encodeURIComponent(shareText + '\n\n' + referralLink)}`, '_blank');
-    }
-    function shareEmail(e) {
-      e.preventDefault();
-      window.open(`mailto:?subject=${encodeURIComponent('Try RecoBee — Free Credits Inside')}&body=${encodeURIComponent(shareText + '\n\n' + referralLink)}`, '_blank');
-    }
-    function shareTwitter(e) {
-      e.preventDefault();
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(referralLink)}`, '_blank');
-    }
-    function shareLinkedIn(e) {
-      e.preventDefault();
-      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(referralLink)}`, '_blank');
-    }
-
-    // History filter
-    function filterHistory(status, btn) {
-      // Update active tab
-      document.querySelectorAll('.header-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-
-      const rows = document.querySelectorAll('#historyTable tbody tr');
-      rows.forEach(row => {
-        if (status === 'all') {
-          row.style.display = '';
-        } else if (status === 'completed') {
-          row.style.display = row.dataset.status === 'completed' ? '' : 'none';
-        } else if (status === 'pending') {
-          row.style.display = (row.dataset.status === 'pending') ? '' : 'none';
-        }
-      });
-    }
-
-    // Toast
+    // ── Toast ──
     function showToast(msg) {
       const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = msg;
+      document.getElementById('toastMsg').textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2500);
     }
+
+    // ── Init ──
+    renderState('new');
   </script>
 
 </body>
