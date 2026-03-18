@@ -394,36 +394,11 @@
     }
     [data-state="new"] .milestone-start-badge { display: block; }
 
-    /* ── Bottom Row: Tabbed Card (History + How It Works) ── */
-    .bottom-card { margin-bottom: 20px; }
-
-    /* Inner tabs for the combined card */
-    .inner-tabs { display: flex; gap: 0; }
-    .inner-tab {
-      padding: 12px 20px; font-size: 14px; font-weight: 600;
-      color: var(--text-muted); cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s; background: none; border-top: none;
-      border-left: none; border-right: none;
-      display: flex; align-items: center; gap: 8px;
+    /* ── Bottom Row: Activity + How It Works side-by-side ── */
+    .bottom-row {
+      display: grid; grid-template-columns: 3fr 2fr;
+      gap: 20px; margin-bottom: 20px;
     }
-    .inner-tab:hover { color: var(--text-secondary); }
-    .inner-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-    .inner-tab .tab-count {
-      padding: 1px 7px; border-radius: 10px;
-      background: var(--bg-card-inner); font-size: 10px; font-weight: 700;
-    }
-    .inner-tab.active .tab-count { background: var(--accent-dim); color: var(--accent); }
-    .tab-bar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; border-bottom: 1px solid var(--border);
-      background: var(--bg-secondary);
-    }
-    .tab-bar-right { display: flex; align-items: center; gap: 8px; }
-
-    /* Tab panels */
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
 
     /* History table */
     .table-wrap { overflow-x: auto; }
@@ -476,42 +451,37 @@
     [data-state="new"] .empty-history { display: block; }
     [data-state="new"] .table-wrap { display: none; }
 
-    /* How It Works panel */
-    .how-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+    /* How It Works — vertical steps */
+    .how-steps-vertical { padding: 8px 24px 16px; }
+    .how-v-step {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
     }
-    .how-card {
-      padding: 28px 24px; text-align: center;
-      border-right: 1px solid var(--border);
-      transition: background 0.2s;
-    }
-    .how-card:last-child { border-right: none; }
-    .how-card:hover { background: rgba(255,255,255,0.015); }
-    .how-card-num {
-      width: 36px; height: 36px; border-radius: 50%;
+    .how-v-step:last-child { border-bottom: none; }
+    .how-v-num {
+      width: 32px; height: 32px; border-radius: 50%;
       background: var(--accent-dim); border: 1px solid var(--accent-border);
       display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 800; color: var(--accent);
-      margin: 0 auto 14px;
+      font-size: 13px; font-weight: 800; color: var(--accent); flex-shrink: 0;
     }
-    .how-card-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-    .how-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; }
-    .how-card-tag {
+    .how-v-content { flex: 1; }
+    .how-v-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .how-v-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .how-v-tag {
       display: inline-flex; align-items: center; gap: 4px;
-      padding: 4px 12px; border-radius: 12px;
+      margin-top: 6px; padding: 3px 10px; border-radius: 12px;
       background: var(--success-dim); color: var(--success);
       font-size: 12px; font-weight: 700;
     }
 
     /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .bottom-row { grid-template-columns: 1fr; }
+    }
     @media (max-width: 1024px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .page-header-row { flex-direction: column; align-items: flex-start; }
       .ref-link-bar { width: 100%; flex-wrap: wrap; }
-      .how-grid { grid-template-columns: 1fr; }
-      .how-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .how-card:last-child { border-bottom: none; }
       .onboarding-banner .ob-grid { grid-template-columns: 1fr; }
       .onboarding-banner .ob-steps { flex-direction: column; gap: 12px; }
     }
@@ -695,27 +665,19 @@
         </div>
       </div>
 
-      <!-- ═══ BOTTOM: Tabbed Card — Activity + How It Works ═══ -->
-      <div class="card bottom-card animate-in delay-5">
-        <div class="tab-bar">
-          <div class="inner-tabs" id="bottomTabs">
-            <button class="inner-tab" data-tab="activity" onclick="switchBottomTab('activity', this)">
-              <i class="fas fa-clock-rotate-left"></i> Activity
-              <span class="tab-count" id="activityCount">8</span>
-            </button>
-            <button class="inner-tab" data-tab="howitworks" onclick="switchBottomTab('howitworks', this)">
-              <i class="fas fa-bolt"></i> How It Works
-            </button>
-          </div>
-          <div class="tab-bar-right" id="historyFilters">
-            <button class="header-tab active" onclick="filterHistory('all', this)">All</button>
-            <button class="header-tab" onclick="filterHistory('completed', this)">Completed</button>
-            <button class="header-tab" onclick="filterHistory('pending', this)">Pending</button>
-          </div>
-        </div>
+      <!-- ═══ BOTTOM: Activity + How It Works side by side ═══ -->
+      <div class="bottom-row animate-in delay-5">
 
-        <!-- Activity Panel -->
-        <div class="tab-panel" id="panel-activity">
+        <!-- Activity / Referral History -->
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-header">
+            <div class="card-header-left"><i class="fas fa-clock-rotate-left"></i> Referral Activity</div>
+            <div class="card-header-right" id="historyFilters">
+              <button class="header-tab active" onclick="filterHistory('all', this)">All</button>
+              <button class="header-tab" onclick="filterHistory('completed', this)">Completed</button>
+              <button class="header-tab" onclick="filterHistory('pending', this)">Pending</button>
+            </div>
+          </div>
           <!-- Empty state (shown for new users) -->
           <div class="empty-history">
             <div class="empty-icon"><i class="fas fa-paper-plane"></i></div>
@@ -748,28 +710,38 @@
           </div>
         </div>
 
-        <!-- How It Works Panel -->
-        <div class="tab-panel" id="panel-howitworks">
-          <div class="how-grid">
-            <div class="how-card">
-              <div class="how-card-num">1</div>
-              <div class="how-card-title">Share Your Link</div>
-              <div class="how-card-desc">Copy your unique referral link and share it with colleagues in the entertainment industry via any channel.</div>
+        <!-- How It Works — always visible -->
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-header">
+            <div class="card-header-left"><i class="fas fa-bolt"></i> How It Works</div>
+          </div>
+          <div class="how-steps-vertical">
+            <div class="how-v-step">
+              <div class="how-v-num">1</div>
+              <div class="how-v-content">
+                <div class="how-v-title">Share Your Link</div>
+                <div class="how-v-desc">Copy your unique referral link and share it with colleagues in the entertainment industry.</div>
+              </div>
             </div>
-            <div class="how-card">
-              <div class="how-card-num">2</div>
-              <div class="how-card-title">They Sign Up</div>
-              <div class="how-card-desc">When someone creates a RecoBee account using your link, you both receive credits instantly.</div>
-              <div class="how-card-tag"><i class="fas fa-coins"></i> +1 credit each</div>
+            <div class="how-v-step">
+              <div class="how-v-num">2</div>
+              <div class="how-v-content">
+                <div class="how-v-title">They Sign Up</div>
+                <div class="how-v-desc">When someone creates a RecoBee account using your link, you both receive credits instantly.</div>
+                <div class="how-v-tag"><i class="fas fa-coins"></i> +1 credit each</div>
+              </div>
             </div>
-            <div class="how-card">
-              <div class="how-card-num">3</div>
-              <div class="how-card-title">They Run an Analysis</div>
-              <div class="how-card-desc">Once your referral completes their first script, trailer, or reel analysis, you earn bonus credits.</div>
-              <div class="how-card-tag"><i class="fas fa-coins"></i> +2 bonus for you</div>
+            <div class="how-v-step">
+              <div class="how-v-num">3</div>
+              <div class="how-v-content">
+                <div class="how-v-title">They Run an Analysis</div>
+                <div class="how-v-desc">Once your referral completes their first analysis, you earn bonus credits.</div>
+                <div class="how-v-tag"><i class="fas fa-coins"></i> +2 bonus for you</div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
 
     </div>
@@ -786,7 +758,6 @@
     const STATES = {
       new: {
         referrals: 0, credits: 0, pending: 0, monthlyLeft: 10,
-        defaultTab: 'howitworks',
         stats: [
           { icon: 'fa-users', label: 'Total Referrals', value: '0', sub: '<span class="encourage">Share your link to get started</span>' },
           { icon: 'fa-coins', label: 'Credits Earned', value: '0', sub: '<span class="encourage">First referral = instant credit</span>' },
@@ -803,7 +774,6 @@
       },
       active: {
         referrals: 7, credits: 24, pending: 2, monthlyLeft: 8,
-        defaultTab: 'activity',
         stats: [
           { icon: 'fa-users', label: 'Total Referrals', value: '7', sub: '<span>+2 this month</span>' },
           { icon: 'fa-coins', label: 'Credits Earned', value: '24', sub: 'Referrals + milestones' },
@@ -853,14 +823,8 @@
       document.getElementById('milestoneHint').innerHTML =
         `<span style="font-size:11px;color:var(--text-muted);font-weight:400;">${cfg.milestoneHint}</span>`;
 
-      // Activity count
-      document.getElementById('activityCount').textContent = state === 'new' ? '0' : '8';
-
       // History filters visibility
       document.getElementById('historyFilters').style.display = state === 'new' ? 'none' : 'flex';
-
-      // Bottom tab default
-      switchBottomTab(cfg.defaultTab, document.querySelector(`.inner-tab[data-tab="${cfg.defaultTab}"]`));
 
       // Demo label
       document.getElementById('demoLabel').textContent = state === 'new' ? 'Viewing: New User' : 'Viewing: Active User (7 referrals)';
@@ -869,20 +833,6 @@
     function toggleDemoState() {
       currentState = currentState === 'new' ? 'active' : 'new';
       renderState(currentState);
-    }
-
-    // ── Bottom tabs ──
-    function switchBottomTab(tab, btn) {
-      document.querySelectorAll('.inner-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      else document.querySelector(`.inner-tab[data-tab="${tab}"]`).classList.add('active');
-      document.getElementById(`panel-${tab}`).classList.add('active');
-
-      // Show/hide history filters only on activity tab
-      const filters = document.getElementById('historyFilters');
-      const isNew = document.getElementById('pageContent').getAttribute('data-state') === 'new';
-      filters.style.display = (tab === 'activity' && !isNew) ? 'flex' : 'none';
     }
 
     // ── History filter ──
