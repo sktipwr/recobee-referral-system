@@ -18,8 +18,8 @@
       --accent-border: rgba(232, 168, 56, 0.3);
       --accent-glow: rgba(232, 168, 56, 0.08);
       --text-primary: #f0f0f0;
-      --text-secondary: #a0a0a0;
-      --text-muted: #666;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
       --border: #2a2a2a;
       --success: #4ade80;
       --success-dim: rgba(74, 222, 128, 0.12);
@@ -125,7 +125,7 @@
     .page-content { padding: 24px 32px 48px; max-width: 1400px; }
     .breadcrumb {
       display: flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--text-muted); margin-bottom: 8px;
+      font-size: 14px; color: var(--text-muted); margin-bottom: 8px;
     }
     .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
     .breadcrumb a:hover { color: var(--accent); }
@@ -147,21 +147,21 @@
     }
     .ref-link-bar:hover { border-color: var(--accent-border); }
     .ref-link-bar .link-label {
-      font-size: 11px; font-weight: 600; color: var(--text-muted);
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
       text-transform: uppercase; letter-spacing: 0.4px;
       white-space: nowrap; display: flex; align-items: center; gap: 6px;
     }
-    .ref-link-bar .link-label i { color: var(--accent); font-size: 12px; }
+    .ref-link-bar .link-label i { color: var(--accent); font-size: 13px; }
     .ref-link-bar .link-value {
-      font-family: 'Inter', monospace; font-size: 13px; font-weight: 500;
+      font-family: 'Inter', monospace; font-size: 14px; font-weight: 500;
       color: var(--text-primary); white-space: nowrap;
       background: var(--bg-card-inner); border-radius: 6px;
       padding: 6px 12px; border: 1px solid var(--border); user-select: all; cursor: text;
     }
     .ref-link-bar .copy-btn {
-      padding: 6px 14px; border-radius: 6px; border: 1px solid var(--accent-border);
+      padding: 7px 16px; border-radius: 6px; border: 1px solid var(--accent-border);
       background: var(--accent-dim); color: var(--accent);
-      font-size: 12px; font-weight: 600; cursor: pointer;
+      font-size: 13px; font-weight: 600; cursor: pointer;
       transition: all 0.2s; white-space: nowrap;
       display: flex; align-items: center; gap: 5px;
     }
@@ -251,17 +251,29 @@
     .ob-cta-sub { font-size: 11px; color: var(--text-muted); }
     [data-state="new"] .onboarding-banner { display: block; }
 
-    /* ── Rules chips ── */
-    .rules-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    /* ── Rules info container ── */
+    .rules-container {
+      margin-bottom: 24px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 14px 20px; display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .rules-label {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+      white-space: nowrap; flex-shrink: 0;
+      padding-right: 16px; border-right: 1px solid var(--border);
+    }
+    .rules-label i { color: var(--accent); font-size: 13px; }
+    .rules-chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .rule-chip {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 12px; border-radius: 8px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      font-size: 11px; color: var(--text-secondary);
-      transition: all 0.2s; cursor: default;
+      padding: 5px 12px; border-radius: 6px;
+      background: var(--bg-card-inner); border: none;
+      font-size: 12px; color: var(--text-secondary);
+      cursor: default;
     }
-    .rule-chip:hover { border-color: var(--accent-border); }
-    .rule-chip i { color: var(--accent); font-size: 10px; }
+    .rule-chip i { color: var(--accent); font-size: 11px; }
     .rule-chip strong { color: var(--text-primary); font-weight: 600; }
 
     /* ── Stats Grid ── */
@@ -275,23 +287,16 @@
     }
     .stat-card:hover { border-color: var(--accent-border); box-shadow: 0 0 20px var(--accent-glow); }
     .stat-card-label {
-      font-size: 11px; font-weight: 600; color: var(--text-muted);
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
       text-transform: uppercase; letter-spacing: 0.5px;
       margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
     }
-    .stat-card-label i { color: var(--accent); font-size: 12px; }
-    .stat-card-value { font-size: 26px; font-weight: 800; line-height: 1.2; }
-    .stat-card-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .stat-card-label i { color: var(--accent); font-size: 13px; }
+    .stat-card-value { font-size: 28px; font-weight: 800; line-height: 1.2; }
+    .stat-card-sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
     .stat-card-sub span { color: var(--success); font-weight: 600; }
     .stat-card-sub .warn { color: var(--warning); }
     .stat-card-sub .encourage { color: var(--accent); font-weight: 500; }
-    .stat-hint {
-      display: inline-flex; align-items: center; gap: 4px;
-      margin-top: 6px; padding: 3px 8px; border-radius: 4px;
-      background: var(--bg-card-inner); font-size: 10px;
-      color: var(--text-muted); line-height: 1.4;
-    }
-    .stat-hint i { font-size: 9px; color: var(--accent); flex-shrink: 0; }
 
     /* ── Card ── */
     .card {
@@ -311,9 +316,9 @@
 
     /* Tab pills */
     .header-tab {
-      padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 6px; border: 1px solid var(--border);
       background: transparent; color: var(--text-muted);
-      font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
     .header-tab:hover { color: var(--text-secondary); background: var(--bg-hover); }
     .header-tab.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-border); }
@@ -362,11 +367,11 @@
       0%, 100% { box-shadow: 0 0 0 0 rgba(232, 168, 56, 0); }
       50% { box-shadow: 0 0 14px 3px rgba(232, 168, 56, 0.2); }
     }
-    .milestone-label { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+    .milestone-label { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
     .milestone-node.done .milestone-label { color: var(--success); }
     .milestone-node.active .milestone-label { color: var(--accent); }
     .milestone-node.locked .milestone-label { color: var(--text-muted); }
-    .milestone-reward { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; }
+    .milestone-reward { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
     .milestone-node.locked .milestone-reward { color: var(--text-muted); }
     .milestone-progress-mini {
       width: 60%; height: 4px; background: var(--bg-primary);
@@ -378,7 +383,7 @@
     .milestone-node.done .fill { background: var(--success); }
     .milestone-node.active .fill { background: var(--accent); }
     .milestone-node.locked .fill { background: var(--text-muted); opacity: 0.3; }
-    .milestone-count { font-size: 10px; font-weight: 600; margin-top: 6px; color: var(--text-muted); }
+    .milestone-count { font-size: 11px; font-weight: 600; margin-top: 6px; color: var(--text-muted); }
     .milestone-node.active .milestone-count { color: var(--accent); }
     /* "Start here" indicator for first-time users */
     .milestone-start-badge {
@@ -395,7 +400,7 @@
     /* Inner tabs for the combined card */
     .inner-tabs { display: flex; gap: 0; }
     .inner-tab {
-      padding: 12px 20px; font-size: 13px; font-weight: 600;
+      padding: 12px 20px; font-size: 14px; font-weight: 600;
       color: var(--text-muted); cursor: pointer;
       border-bottom: 2px solid transparent;
       transition: all 0.2s; background: none; border-top: none;
@@ -424,19 +429,19 @@
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; }
     table th {
-      text-align: left; padding: 10px 20px; font-size: 10px;
+      text-align: left; padding: 12px 20px; font-size: 11px;
       font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
       color: var(--text-muted); border-bottom: 1px solid var(--border);
     }
     table td {
-      padding: 12px 20px; font-size: 13px;
+      padding: 13px 20px; font-size: 14px;
       color: var(--text-secondary); border-bottom: 1px solid var(--border);
     }
     table tr:last-child td { border-bottom: none; }
     table tr:hover td { background: rgba(255, 255, 255, 0.02); }
     .badge {
       display: inline-flex; align-items: center; gap: 5px;
-      padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
     }
     .badge-success { background: var(--success-dim); color: var(--success); }
     .badge-warning { background: var(--warning-dim); color: var(--warning); }
@@ -490,13 +495,13 @@
       font-size: 14px; font-weight: 800; color: var(--accent);
       margin: 0 auto 14px;
     }
-    .how-card-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-    .how-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px; }
+    .how-card-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .how-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; }
     .how-card-tag {
       display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 10px; border-radius: 12px;
+      padding: 4px 12px; border-radius: 12px;
       background: var(--success-dim); color: var(--success);
-      font-size: 11px; font-weight: 700;
+      font-size: 12px; font-weight: 700;
     }
 
     /* ── Responsive ── */
@@ -659,14 +664,17 @@
         </div>
       </div>
 
-      <!-- Rules chips -->
-      <div class="rules-bar animate-in delay-2">
-        <div class="rule-chip"><i class="fas fa-calendar-day"></i> <strong>10</strong> referrals/month</div>
-        <div class="rule-chip"><i class="fas fa-infinity"></i> <strong>50</strong> lifetime cap</div>
-        <div class="rule-chip"><i class="fas fa-flask"></i> Bonus after <strong>1st analysis</strong></div>
-        <div class="rule-chip"><i class="fas fa-fingerprint"></i> Unique emails only</div>
-        <div class="rule-chip"><i class="fas fa-hourglass-half"></i> Link valid <strong>30 days</strong></div>
-        <div class="rule-chip"><i class="fas fa-user-plus"></i> New users only</div>
+      <!-- Rules info container -->
+      <div class="rules-container animate-in delay-2">
+        <div class="rules-label"><i class="fas fa-circle-info"></i> Program Rules</div>
+        <div class="rules-chips">
+          <div class="rule-chip"><i class="fas fa-calendar-day"></i> <strong>10</strong> referrals/month</div>
+          <div class="rule-chip"><i class="fas fa-infinity"></i> <strong>50</strong> lifetime cap</div>
+          <div class="rule-chip"><i class="fas fa-flask"></i> Bonus after <strong>1st analysis</strong></div>
+          <div class="rule-chip"><i class="fas fa-fingerprint"></i> Unique emails only</div>
+          <div class="rule-chip"><i class="fas fa-hourglass-half"></i> Link valid <strong>30 days</strong></div>
+          <div class="rule-chip"><i class="fas fa-user-plus"></i> New users only</div>
+        </div>
       </div>
 
       <!-- Stats -->
@@ -783,7 +791,7 @@
           { icon: 'fa-users', label: 'Total Referrals', value: '0', sub: '<span class="encourage">Share your link to get started</span>' },
           { icon: 'fa-coins', label: 'Credits Earned', value: '0', sub: '<span class="encourage">First referral = instant credit</span>' },
           { icon: 'fa-clock', label: 'Pending', value: '0', sub: 'No pending referrals' },
-          { icon: 'fa-calendar', label: 'Monthly Left', value: '10', sub: 'of 10 this month', hint: '<i class="fas fa-rotate"></i> Resets on 1st of each month' }
+          { icon: 'fa-calendar', label: 'Monthly Left', value: '10', sub: 'of 10 this month' }
         ],
         milestones: [
           { state: 'active', icon: 'fa-seedling', label: '5 Referrals', reward: '+3 bonus credits', pct: 0, count: '0 / 5', startBadge: true },
@@ -800,7 +808,7 @@
           { icon: 'fa-users', label: 'Total Referrals', value: '7', sub: '<span>+2 this month</span>' },
           { icon: 'fa-coins', label: 'Credits Earned', value: '24', sub: 'Referrals + milestones' },
           { icon: 'fa-clock', label: 'Pending', value: '2', sub: '<span class="warn">Awaiting first analysis</span>' },
-          { icon: 'fa-calendar', label: 'Monthly Left', value: '8', sub: 'of 10 this month', hint: '<i class="fas fa-rotate"></i> Resets on 1st of each month' }
+          { icon: 'fa-calendar', label: 'Monthly Left', value: '8', sub: 'of 10 this month' }
         ],
         milestones: [
           { state: 'done', icon: 'fa-check', label: '5 Referrals', reward: '+3 bonus credits', pct: 100, count: 'Claimed' },
@@ -826,7 +834,6 @@
           <div class="stat-card-label"><i class="fas ${s.icon}"></i> ${s.label}</div>
           <div class="stat-card-value">${s.value}</div>
           <div class="stat-card-sub">${s.sub}</div>
-          ${s.hint ? `<div class="stat-hint">${s.hint}</div>` : ''}
         </div>
       `).join('');
 
