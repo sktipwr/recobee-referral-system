@@ -42,125 +42,71 @@
       overflow-x: hidden;
     }
 
-    /* Sidebar */
+    /* ── Sidebar ── */
     .sidebar {
-      position: fixed;
-      left: 0; top: 0;
-      width: var(--sidebar-width);
-      height: 100vh;
+      position: fixed; left: 0; top: 0;
+      width: var(--sidebar-width); height: 100vh;
       background: var(--bg-secondary);
       border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 16px 0;
-      z-index: 100;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 16px 0; z-index: 100;
     }
-
     .sidebar-logo {
-      width: 36px; height: 36px;
-      background: var(--accent);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px;
-      cursor: pointer;
+      width: 36px; height: 36px; background: var(--accent);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px; cursor: pointer;
     }
-
-    .sidebar-logo img { width: 24px; height: 24px; }
     .sidebar-logo svg { width: 22px; height: 22px; }
-
     .sidebar-nav { display: flex; flex-direction: column; gap: 4px; width: 100%; }
-
     .sidebar-item {
       display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 44px;
-      color: var(--text-muted);
-      cursor: pointer; transition: all 0.2s;
-      position: relative; font-size: 18px;
-      text-decoration: none;
+      width: 100%; height: 44px; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s; position: relative;
+      font-size: 18px; text-decoration: none;
     }
-
     .sidebar-item:hover { color: var(--text-secondary); background: var(--bg-hover); }
-
-    .sidebar-item.active {
-      color: var(--accent);
-      background: var(--accent-dim);
-      border-left: 3px solid var(--accent);
-    }
-
-    .sidebar-bottom {
-      margin-top: auto;
-      display: flex; flex-direction: column; gap: 4px; width: 100%;
-    }
-
+    .sidebar-item.active { color: var(--accent); background: var(--accent-dim); border-left: 3px solid var(--accent); }
+    .sidebar-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 4px; width: 100%; }
     .sidebar-item .tooltip {
-      display: none;
-      position: absolute;
-      left: calc(100% + 8px);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-primary);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 200;
-      pointer-events: none;
+      display: none; position: absolute; left: calc(100% + 8px);
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-primary); padding: 6px 12px; border-radius: 6px;
+      font-size: 12px; white-space: nowrap; z-index: 200; pointer-events: none;
     }
-
     .sidebar-item:hover .tooltip { display: block; }
 
-    /* Main Content */
+    /* ── Main ── */
     .main { margin-left: var(--sidebar-width); min-height: 100vh; }
 
-    /* Top Bar */
+    /* ── Top Bar ── */
     .topbar {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 32px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-secondary);
-      position: sticky; top: 0; z-index: 50;
+      padding: 12px 32px; border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary); position: sticky; top: 0; z-index: 50;
     }
-
     .topbar-right { display: flex; align-items: center; gap: 12px; }
-
     .btn-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px; border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-secondary);
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text-secondary);
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 14px;
-      transition: all 0.2s;
+      cursor: pointer; font-size: 14px; transition: all 0.2s;
     }
-
     .btn-icon:hover { background: var(--bg-hover); color: var(--text-primary); }
-
     .btn-credits {
       display: flex; align-items: center; gap: 8px;
-      padding: 6px 14px; border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      font-size: 13px; font-weight: 500; cursor: pointer;
-      transition: all 0.2s;
+      padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text-primary);
+      font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;
     }
-
     .btn-credits:hover { background: var(--bg-hover); }
     .btn-credits .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-
     .btn-user {
       display: flex; align-items: center; gap: 8px;
-      padding: 6px 14px; border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      font-size: 13px; font-weight: 500; cursor: pointer;
-      transition: all 0.2s;
+      padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text-primary);
+      font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;
     }
-
     .btn-user:hover { background: var(--bg-hover); }
-
     .btn-user .avatar {
       width: 22px; height: 22px; border-radius: 4px;
       background: var(--accent); color: #000;
@@ -168,551 +114,345 @@
       font-weight: 700; font-size: 11px;
     }
 
-    /* Page Content */
+    /* ── Page ── */
     .page-content { padding: 24px 32px 48px; max-width: 1400px; }
-
-    /* Breadcrumb */
     .breadcrumb {
       display: flex; align-items: center; gap: 8px;
       font-size: 13px; color: var(--text-muted); margin-bottom: 8px;
     }
-
     .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
     .breadcrumb a:hover { color: var(--accent); }
     .breadcrumb .sep { font-size: 10px; }
 
-    /* Page Header */
-    .page-title { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
-
-    /* Stat Cards Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 28px;
+    /* ── Page Header Row ── */
+    .page-header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px; gap: 16px; flex-wrap: wrap;
     }
+    .page-title { font-size: 22px; font-weight: 700; margin: 0; }
 
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      transition: all 0.25s;
-    }
-
-    .stat-card:hover {
-      border-color: var(--accent-border);
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    .stat-card-label {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-      display: flex; align-items: center; gap: 8px;
-    }
-
-    .stat-card-label i { color: var(--accent); font-size: 13px; }
-
-    .stat-card-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1.2;
-    }
-
-    .stat-card-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .stat-card-sub span { color: var(--success); font-weight: 600; }
-
-    /* Card */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .card-header {
-      padding: 18px 24px;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-      font-size: 15px; font-weight: 600;
+    /* ── ZONE 1: Compact Referral Link Bar ── */
+    .ref-link-bar {
       display: flex; align-items: center; gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 8px 8px 16px;
+      transition: border-color 0.2s;
+      flex-shrink: 0;
     }
+    .ref-link-bar:hover { border-color: var(--accent-border); }
+    .ref-link-bar .link-label {
+      font-size: 11px; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.4px;
+      white-space: nowrap; display: flex; align-items: center; gap: 6px;
+    }
+    .ref-link-bar .link-label i { color: var(--accent); font-size: 12px; }
+    .ref-link-bar .link-value {
+      font-family: 'Inter', monospace; font-size: 13px; font-weight: 500;
+      color: var(--text-primary); white-space: nowrap;
+      background: var(--bg-card-inner); border-radius: 6px;
+      padding: 6px 12px; border: 1px solid var(--border);
+      user-select: all; cursor: text;
+    }
+    .ref-link-bar .copy-btn {
+      padding: 6px 14px; border-radius: 6px; border: 1px solid var(--accent-border);
+      background: var(--accent-dim); color: var(--accent);
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s; white-space: nowrap;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .ref-link-bar .copy-btn:hover { background: var(--accent); color: #000; }
+    .ref-link-bar .copy-btn.copied { background: var(--success); border-color: var(--success); color: #000; }
+    .ref-link-bar .share-toggle {
+      padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--bg-card-inner); color: var(--text-secondary);
+      font-size: 12px; cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .ref-link-bar .share-toggle:hover { background: var(--bg-hover); color: var(--text-primary); }
 
-    .card-header i { color: var(--accent); font-size: 15px; }
+    /* Share dropdown */
+    .share-dropdown-wrap { position: relative; }
+    .share-dropdown {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 8px;
+      display: flex; gap: 6px; z-index: 60;
+      opacity: 0; pointer-events: none; transform: translateY(-4px);
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .share-dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .share-pill {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg-card-inner);
+      color: var(--text-secondary); cursor: pointer; transition: all 0.2s;
+      font-size: 15px; text-decoration: none;
+    }
+    .share-pill:hover { border-color: var(--accent-border); background: var(--bg-hover); }
+    .share-pill.whatsapp:hover { color: #25D366; }
+    .share-pill.email:hover { color: var(--info); }
+    .share-pill.twitter:hover { color: #1DA1F2; }
+    .share-pill.linkedin:hover { color: #0A66C2; }
 
+    /* ── Stats Grid ── */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px; transition: all 0.25s;
+    }
+    .stat-card:hover { border-color: var(--accent-border); box-shadow: 0 0 20px var(--accent-glow); }
+    .stat-card-label {
+      font-size: 11px; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .stat-card-label i { color: var(--accent); font-size: 12px; }
+    .stat-card-value { font-size: 26px; font-weight: 800; line-height: 1.2; }
+    .stat-card-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .stat-card-sub span { color: var(--success); font-weight: 600; }
+    .stat-card-sub .warn { color: var(--warning); }
+
+    /* Context hint inside stat cards */
+    .stat-hint {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 6px; padding: 3px 8px; border-radius: 4px;
+      background: var(--bg-card-inner); font-size: 10px;
+      color: var(--text-muted); line-height: 1.4;
+    }
+    .stat-hint i { font-size: 9px; color: var(--accent); flex-shrink: 0; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; margin-bottom: 20px;
+    }
+    .card-header {
+      padding: 16px 24px; background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .card-header-left { display: flex; align-items: center; gap: 10px; }
+    .card-header-left i { color: var(--accent); font-size: 14px; }
+    .card-header-right { display: flex; align-items: center; gap: 8px; }
     .card-body { padding: 24px; }
 
-    /* Referral Link Box */
-    .referral-link-box {
-      display: flex;
-      gap: 16px;
-      align-items: stretch;
-      margin-bottom: 20px;
+    /* ── Tab pills for card headers ── */
+    .header-tab {
+      padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border);
+      background: transparent; color: var(--text-muted);
+      font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
+    .header-tab:hover { color: var(--text-secondary); background: var(--bg-hover); }
+    .header-tab.active { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-border); }
 
-    .referral-link-input-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 20px;
+    /* ── ZONE 2: Milestones — the hero section ── */
+    .milestones-hero {
+      display: grid; grid-template-columns: 1fr; gap: 0;
       position: relative;
-      transition: border-color 0.2s;
     }
-
-    .referral-link-input-wrap:hover { border-color: var(--accent-border); }
-
-    .referral-link-input-wrap .link-icon {
-      color: var(--accent);
-      font-size: 16px;
-      flex-shrink: 0;
+    .milestone-track {
+      display: flex; align-items: stretch; gap: 0;
+      padding: 0; overflow-x: auto;
     }
-
-    .referral-link-input-wrap input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--text-primary);
-      font-family: 'Inter', monospace;
-      font-size: 14px;
-      font-weight: 500;
-      outline: none;
+    .milestone-node {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 24px 16px 20px;
+      position: relative; text-align: center;
+      transition: background 0.2s;
     }
+    .milestone-node:hover { background: rgba(255,255,255,0.015); }
 
-    .referral-link-input-wrap .copy-btn {
-      padding: 8px 18px;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    /* Connector line between nodes */
+    .milestone-node:not(:last-child)::after {
+      content: '';
+      position: absolute; top: 42px; right: -1px;
+      width: calc(50%); height: 2px;
+      background: var(--border); z-index: 1;
     }
-
-    .referral-link-input-wrap .copy-btn:hover {
-      background: var(--accent);
-      color: #000;
+    .milestone-node:not(:first-child)::before {
+      content: '';
+      position: absolute; top: 42px; left: -1px;
+      width: calc(50%); height: 2px;
+      background: var(--border); z-index: 1;
     }
+    .milestone-node.done:not(:last-child)::after,
+    .milestone-node.done + .milestone-node::before { background: var(--success); }
+    .milestone-node.done + .milestone-node.active::before { background: var(--accent); }
 
-    .referral-link-input-wrap .copy-btn.copied {
-      background: var(--success);
-      border-color: var(--success);
-      color: #000;
-    }
-
-    /* Share Buttons */
-    .share-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .share-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px; border-radius: 8px;
-      font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
-      border: 1px solid var(--border);
-      background: var(--bg-card-inner);
-      color: var(--text-primary);
-      text-decoration: none;
-    }
-
-    .share-btn:hover { border-color: var(--accent-border); background: var(--bg-hover); }
-
-    .share-btn.whatsapp i { color: #25D366; }
-    .share-btn.email i { color: var(--info); }
-    .share-btn.twitter i { color: #1DA1F2; }
-    .share-btn.linkedin i { color: #0A66C2; }
-
-    /* Two Column Layout */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    /* How It Works */
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .step {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .step-num {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
+    .milestone-icon-wrap {
+      width: 44px; height: 44px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 800;
-      color: var(--accent);
-      flex-shrink: 0;
+      font-size: 18px; flex-shrink: 0; position: relative; z-index: 2;
+      margin-bottom: 12px;
     }
-
-    .step-content { flex: 1; }
-
-    .step-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-
-    .step-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .step-reward {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 6px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    /* Milestone Progress */
-    .milestones { display: flex; flex-direction: column; gap: 18px; }
-
-    .milestone {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .milestone-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .milestone-icon.locked {
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-
-    .milestone-icon.unlocked {
-      background: var(--success-dim);
-      border: 1px solid rgba(74, 222, 128, 0.3);
+    .milestone-node.done .milestone-icon-wrap {
+      background: var(--success-dim); border: 1.5px solid rgba(74, 222, 128, 0.3);
       color: var(--success);
     }
-
-    .milestone-icon.next {
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      color: var(--accent);
-      animation: pulse-glow 2s infinite;
+    .milestone-node.active .milestone-icon-wrap {
+      background: var(--accent-dim); border: 1.5px solid var(--accent-border);
+      color: var(--accent); animation: pulse-glow 2s infinite;
     }
-
+    .milestone-node.locked .milestone-icon-wrap {
+      background: var(--bg-card-inner); border: 1.5px solid var(--border);
+      color: var(--text-muted);
+    }
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 0 0 rgba(232, 168, 56, 0); }
-      50% { box-shadow: 0 0 12px 2px rgba(232, 168, 56, 0.2); }
+      50% { box-shadow: 0 0 14px 3px rgba(232, 168, 56, 0.2); }
     }
 
-    .milestone-info { flex: 1; }
+    .milestone-label { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+    .milestone-node.done .milestone-label { color: var(--success); }
+    .milestone-node.active .milestone-label { color: var(--accent); }
+    .milestone-node.locked .milestone-label { color: var(--text-muted); }
 
-    .milestone-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
+    .milestone-reward { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; }
+    .milestone-node.locked .milestone-reward { color: var(--text-muted); }
+
+    .milestone-progress-mini {
+      width: 60%; height: 4px; background: var(--bg-primary);
+      border-radius: 2px; overflow: hidden;
+    }
+    .milestone-progress-mini .fill {
+      height: 100%; border-radius: 2px; transition: width 0.6s ease;
+    }
+    .milestone-node.done .fill { background: var(--success); }
+    .milestone-node.active .fill { background: var(--accent); }
+    .milestone-node.locked .fill { background: var(--text-muted); opacity: 0.3; }
+
+    .milestone-count {
+      font-size: 10px; font-weight: 600; margin-top: 6px; color: var(--text-muted);
+    }
+    .milestone-node.active .milestone-count { color: var(--accent); }
+
+    /* ── ZONE 3: Two-col Activity + How it works ── */
+    .zone-3 {
+      display: grid; grid-template-columns: 3fr 2fr;
+      gap: 20px; margin-bottom: 20px;
     }
 
-    .milestone-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .milestone-progress-bar {
-      width: 100%;
-      height: 6px;
-      background: var(--bg-card-inner);
-      border-radius: 3px;
-      margin-top: 6px;
-      overflow: hidden;
-    }
-
-    .milestone-progress-fill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 0.6s ease;
-    }
-
-    .milestone-progress-fill.active { background: var(--accent); }
-    .milestone-progress-fill.done { background: var(--success); }
-
-    .milestone-badge {
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .milestone-badge.locked {
-      background: var(--bg-card-inner);
-      color: var(--text-muted);
-    }
-
-    .milestone-badge.unlocked {
-      background: var(--success-dim);
-      color: var(--success);
-    }
-
-    .milestone-badge.next {
-      background: var(--accent-dim);
-      color: var(--accent);
-    }
-
-    /* Rules Section */
-    .rules-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      cursor: pointer;
-      transition: background 0.2s;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .rules-toggle:hover { background: var(--bg-hover); }
-
-    .rules-toggle-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .rules-toggle-left i:first-child { color: var(--accent); }
-
-    .rules-toggle .chevron {
-      color: var(--text-muted);
-      transition: transform 0.3s;
-      font-size: 12px;
-    }
-
-    .rules-toggle.open .chevron { transform: rotate(180deg); }
-
-    .rules-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .rules-content.open { max-height: 600px; }
-
-    .rules-list {
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .rule-item {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      padding: 12px 16px;
-      background: var(--bg-card-inner);
-      border-radius: 8px;
-      border: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    .rule-item:hover { border-color: var(--border); }
-
-    .rule-icon {
-      width: 28px; height: 28px;
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-      background: var(--accent-dim);
-      color: var(--accent);
-    }
-
-    .rule-text {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .rule-text strong { color: var(--text-primary); font-weight: 600; }
-
-    /* Referral History Table */
+    /* History table */
     .table-wrap { overflow-x: auto; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
+    table { width: 100%; border-collapse: collapse; }
     table th {
-      text-align: left;
-      padding: 12px 20px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
+      text-align: left; padding: 10px 20px; font-size: 10px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--text-muted); border-bottom: 1px solid var(--border);
     }
-
     table td {
-      padding: 14px 20px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--border);
+      padding: 12px 20px; font-size: 13px;
+      color: var(--text-secondary); border-bottom: 1px solid var(--border);
     }
-
     table tr:last-child td { border-bottom: none; }
-
     table tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
     }
-
     .badge-success { background: var(--success-dim); color: var(--success); }
     .badge-warning { background: var(--warning-dim); color: var(--warning); }
     .badge-danger { background: var(--danger-dim); color: var(--danger); }
-    .badge-info { background: var(--info-dim); color: var(--info); }
-
     .credit-plus { color: var(--success); font-weight: 600; }
 
-    /* Empty State */
-    .empty-state {
-      text-align: center;
-      padding: 48px 24px;
+    /* ── How It Works — compact sidebar ── */
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+    }
+    .how-step:last-child { border-bottom: none; }
+    .how-step-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--bg-card-inner); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: var(--accent); flex-shrink: 0;
+    }
+    .how-step-content { flex: 1; }
+    .how-step-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .how-step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .how-step-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 5px; padding: 2px 8px; border-radius: 12px;
+      background: var(--accent-dim); color: var(--accent);
+      font-size: 10px; font-weight: 700;
     }
 
-    .empty-state i {
-      font-size: 40px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      opacity: 0.4;
+    /* ── Rules — inline chips above the fold ── */
+    .rules-bar {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 24px;
     }
-
-    .empty-state p {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+    .rule-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 8px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      font-size: 11px; color: var(--text-secondary);
+      transition: all 0.2s; cursor: default;
     }
+    .rule-chip:hover { border-color: var(--accent-border); }
+    .rule-chip i { color: var(--accent); font-size: 10px; }
+    .rule-chip strong { color: var(--text-primary); font-weight: 600; }
 
-    .empty-state .sub { font-size: 12px; }
-
-    /* Responsive */
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .zone-3 { grid-template-columns: 1fr; }
+    }
     @media (max-width: 1024px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .two-col { grid-template-columns: 1fr; }
-      .rules-list { grid-template-columns: 1fr; }
+      .page-header-row { flex-direction: column; align-items: flex-start; }
+      .ref-link-bar { width: 100%; flex-wrap: wrap; }
+      .rules-bar { gap: 6px; }
     }
-
     @media (max-width: 768px) {
       .sidebar { display: none; }
       .main { margin-left: 0; }
       .page-content { padding: 20px 16px 40px; }
       .topbar { padding: 12px 16px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
-      .referral-link-box { flex-direction: column; }
-      .share-row { flex-wrap: wrap; }
-      .share-btn { flex: 1; justify-content: center; min-width: 120px; }
+      .milestone-track { flex-wrap: wrap; }
+      .milestone-node { min-width: 50%; }
+      .milestone-node::before, .milestone-node::after { display: none; }
+      .ref-link-bar .link-value { font-size: 11px; }
     }
-
     @media (max-width: 480px) {
       .stats-grid { grid-template-columns: 1fr; }
+      .milestone-node { min-width: 100%; }
     }
 
-    /* Animations */
+    /* ── Animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .animate-in {
-      animation: fadeUp 0.4s ease forwards;
-      opacity: 0;
-    }
-
+    .animate-in { animation: fadeUp 0.4s ease forwards; opacity: 0; }
     .delay-1 { animation-delay: 0.05s; }
     .delay-2 { animation-delay: 0.1s; }
     .delay-3 { animation-delay: 0.15s; }
     .delay-4 { animation-delay: 0.2s; }
     .delay-5 { animation-delay: 0.25s; }
     .delay-6 { animation-delay: 0.3s; }
-    .delay-7 { animation-delay: 0.35s; }
 
-    /* Toast */
+    /* ── Toast ── */
     .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--success);
-      color: var(--success);
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transform: translateY(80px);
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 999;
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--bg-card); border: 1px solid var(--success);
+      color: var(--success); padding: 12px 20px; border-radius: 10px;
+      font-size: 13px; font-weight: 600; display: flex;
+      align-items: center; gap: 8px;
+      transform: translateY(80px); opacity: 0;
+      transition: all 0.3s ease; z-index: 999;
     }
-
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .toast.show { transform: translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
@@ -726,7 +466,6 @@
         <path d="M2 12l10 5 10-5"/>
       </svg>
     </div>
-
     <nav class="sidebar-nav">
       <a href="#" class="sidebar-item"><i class="fas fa-house"></i><span class="tooltip">Home</span></a>
       <a href="#" class="sidebar-item"><i class="fas fa-chart-line"></i><span class="tooltip">Cinelytics</span></a>
@@ -737,7 +476,6 @@
       <a href="#" class="sidebar-item"><i class="fas fa-bullhorn"></i><span class="tooltip">Ads Analysis</span></a>
       <a href="#" class="sidebar-item active"><i class="fas fa-gift"></i><span class="tooltip">Referrals</span></a>
     </nav>
-
     <div class="sidebar-bottom">
       <a href="#" class="sidebar-item"><i class="fas fa-user"></i><span class="tooltip">Account</span></a>
       <a href="#" class="sidebar-item"><i class="fas fa-arrow-right-from-bracket"></i><span class="tooltip">Logout</span></a>
@@ -767,282 +505,228 @@
         <span>Referral Program</span>
       </div>
 
-      <h1 class="page-title animate-in delay-1">Refer & Earn Credits</h1>
+      <!-- ═══ ZONE 1: Title + Compact Link Bar ═══ -->
+      <div class="page-header-row animate-in delay-1">
+        <h1 class="page-title">Refer & Earn Credits</h1>
+        <div class="ref-link-bar">
+          <div class="link-label"><i class="fas fa-link"></i> Your link</div>
+          <div class="link-value" id="referralLink">recobee.ai/r/RB-DEM0-7X9K</div>
+          <button class="copy-btn" id="copyBtn" onclick="copyLink()">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+          <div class="share-dropdown-wrap">
+            <button class="share-toggle" onclick="toggleShare()">
+              <i class="fas fa-share-nodes"></i> Share
+            </button>
+            <div class="share-dropdown" id="shareDropdown">
+              <a href="#" class="share-pill whatsapp" onclick="shareWhatsApp(event)" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" class="share-pill email" onclick="shareEmail(event)" title="Email"><i class="fas fa-envelope"></i></a>
+              <a href="#" class="share-pill twitter" onclick="shareTwitter(event)" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" class="share-pill linkedin" onclick="shareLinkedIn(event)" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rules as inline chips — visible before first scroll -->
+      <div class="rules-bar animate-in delay-2">
+        <div class="rule-chip"><i class="fas fa-calendar-day"></i> <strong>10</strong> referrals/month</div>
+        <div class="rule-chip"><i class="fas fa-infinity"></i> <strong>50</strong> lifetime cap</div>
+        <div class="rule-chip"><i class="fas fa-flask"></i> Bonus after <strong>1st analysis</strong></div>
+        <div class="rule-chip"><i class="fas fa-fingerprint"></i> Unique emails only</div>
+        <div class="rule-chip"><i class="fas fa-hourglass-half"></i> Link valid <strong>30 days</strong></div>
+        <div class="rule-chip"><i class="fas fa-user-plus"></i> New users only</div>
+      </div>
 
       <!-- Stats -->
-      <div class="stats-grid">
-        <div class="stat-card animate-in delay-1">
+      <div class="stats-grid animate-in delay-2">
+        <div class="stat-card">
           <div class="stat-card-label"><i class="fas fa-users"></i> Total Referrals</div>
           <div class="stat-card-value">7</div>
           <div class="stat-card-sub"><span>+2 this month</span></div>
         </div>
-        <div class="stat-card animate-in delay-2">
+        <div class="stat-card">
           <div class="stat-card-label"><i class="fas fa-coins"></i> Credits Earned</div>
           <div class="stat-card-value">24</div>
-          <div class="stat-card-sub">From referrals + milestones</div>
+          <div class="stat-card-sub">Referrals + milestones</div>
         </div>
-        <div class="stat-card animate-in delay-3">
+        <div class="stat-card">
           <div class="stat-card-label"><i class="fas fa-clock"></i> Pending</div>
           <div class="stat-card-value">2</div>
-          <div class="stat-card-sub">Awaiting first analysis</div>
+          <div class="stat-card-sub"><span class="warn">Awaiting first analysis</span></div>
         </div>
-        <div class="stat-card animate-in delay-4">
-          <div class="stat-card-label"><i class="fas fa-calendar"></i> Monthly Remaining</div>
+        <div class="stat-card">
+          <div class="stat-card-label"><i class="fas fa-calendar"></i> Monthly Left</div>
           <div class="stat-card-value">8</div>
-          <div class="stat-card-sub">of 10 referrals this month</div>
+          <div class="stat-card-sub">of 10 this month</div>
+          <div class="stat-hint"><i class="fas fa-rotate"></i> Resets on 1st of each month</div>
         </div>
       </div>
 
-      <!-- Referral Link Section -->
-      <div class="card animate-in delay-5">
+      <!-- ═══ ZONE 2: Milestone Progress — the hero ═══ -->
+      <div class="card animate-in delay-3">
         <div class="card-header">
-          <i class="fas fa-link"></i> Your Referral Link
-        </div>
-        <div class="card-body">
-          <div class="referral-link-box">
-            <div class="referral-link-input-wrap">
-              <i class="fas fa-link link-icon"></i>
-              <input type="text" id="referralLink" value="https://recobee.ai/r/RB-DEM0-7X9K" readonly>
-              <button class="copy-btn" id="copyBtn" onclick="copyLink()">
-                <i class="fas fa-copy"></i> Copy
-              </button>
-            </div>
+          <div class="card-header-left"><i class="fas fa-trophy"></i> Milestone Progress</div>
+          <div class="card-header-right">
+            <span style="font-size:11px; color:var(--text-muted); font-weight:400;">Next bonus in <strong style="color:var(--accent);">3 referrals</strong></span>
           </div>
-          <div class="share-row">
-            <a href="#" class="share-btn whatsapp" onclick="shareWhatsApp(event)">
-              <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-            <a href="#" class="share-btn email" onclick="shareEmail(event)">
-              <i class="fas fa-envelope"></i> Email
-            </a>
-            <a href="#" class="share-btn twitter" onclick="shareTwitter(event)">
-              <i class="fab fa-x-twitter"></i> Twitter / X
-            </a>
-            <a href="#" class="share-btn linkedin" onclick="shareLinkedIn(event)">
-              <i class="fab fa-linkedin-in"></i> LinkedIn
-            </a>
+        </div>
+        <div class="milestones-hero">
+          <div class="milestone-track">
+
+            <div class="milestone-node done">
+              <div class="milestone-icon-wrap"><i class="fas fa-check"></i></div>
+              <div class="milestone-label">5 Referrals</div>
+              <div class="milestone-reward">+3 bonus credits</div>
+              <div class="milestone-progress-mini"><div class="fill" style="width:100%"></div></div>
+              <div class="milestone-count">Claimed</div>
+            </div>
+
+            <div class="milestone-node active">
+              <div class="milestone-icon-wrap"><i class="fas fa-star"></i></div>
+              <div class="milestone-label">10 Referrals</div>
+              <div class="milestone-reward">+5 bonus credits</div>
+              <div class="milestone-progress-mini"><div class="fill" style="width:70%"></div></div>
+              <div class="milestone-count">7 / 10</div>
+            </div>
+
+            <div class="milestone-node locked">
+              <div class="milestone-icon-wrap"><i class="fas fa-crown"></i></div>
+              <div class="milestone-label">20 Referrals</div>
+              <div class="milestone-reward">+10 bonus credits</div>
+              <div class="milestone-progress-mini"><div class="fill" style="width:35%"></div></div>
+              <div class="milestone-count">7 / 20</div>
+            </div>
+
+            <div class="milestone-node locked">
+              <div class="milestone-icon-wrap"><i class="fas fa-gem"></i></div>
+              <div class="milestone-label">50 Referrals</div>
+              <div class="milestone-reward">VIP tier unlock</div>
+              <div class="milestone-progress-mini"><div class="fill" style="width:14%"></div></div>
+              <div class="milestone-count">7 / 50</div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <!-- Two Column: How it Works + Milestones -->
-      <div class="two-col">
+      <!-- ═══ ZONE 3: History (prominent) + How it works (compact sidebar) ═══ -->
+      <div class="zone-3 animate-in delay-4">
 
-        <!-- How It Works -->
-        <div class="card animate-in delay-5">
+        <!-- Referral History — now prominent -->
+        <div class="card" style="margin-bottom:0;">
           <div class="card-header">
-            <i class="fas fa-bolt"></i> How It Works
-          </div>
-          <div class="card-body">
-            <div class="steps">
-              <div class="step">
-                <div class="step-num">1</div>
-                <div class="step-content">
-                  <div class="step-title">Share Your Link</div>
-                  <div class="step-desc">Share your unique referral link with friends and colleagues in the entertainment industry.</div>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-num">2</div>
-                <div class="step-content">
-                  <div class="step-title">They Sign Up</div>
-                  <div class="step-desc">When someone signs up using your link, you both receive credits instantly.</div>
-                  <div class="step-reward"><i class="fas fa-coins"></i> +1 credit each</div>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-num">3</div>
-                <div class="step-content">
-                  <div class="step-title">They Run Their First Analysis</div>
-                  <div class="step-desc">Once your referral completes their first analysis, you earn bonus credits.</div>
-                  <div class="step-reward"><i class="fas fa-coins"></i> +2 bonus credits for you</div>
-                </div>
-              </div>
+            <div class="card-header-left"><i class="fas fa-clock-rotate-left"></i> Referral History</div>
+            <div class="card-header-right">
+              <button class="header-tab active" onclick="filterHistory('all', this)">All</button>
+              <button class="header-tab" onclick="filterHistory('completed', this)">Completed</button>
+              <button class="header-tab" onclick="filterHistory('pending', this)">Pending</button>
             </div>
+          </div>
+          <div class="table-wrap">
+            <table id="historyTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Referred User</th>
+                  <th>Status</th>
+                  <th>Credits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="pending">
+                  <td>15/03/2026</td>
+                  <td>a****@gmail.com</td>
+                  <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td>
+                  <td class="credit-plus">+1</td>
+                </tr>
+                <tr data-status="pending">
+                  <td>12/03/2026</td>
+                  <td>r****@outlook.com</td>
+                  <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td>
+                  <td class="credit-plus">+1</td>
+                </tr>
+                <tr data-status="completed">
+                  <td>08/03/2026</td>
+                  <td>s****@yahoo.com</td>
+                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
+                  <td class="credit-plus">+3</td>
+                </tr>
+                <tr data-status="completed">
+                  <td>01/03/2026</td>
+                  <td>m****@gmail.com</td>
+                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
+                  <td class="credit-plus">+3</td>
+                </tr>
+                <tr data-status="completed">
+                  <td>22/02/2026</td>
+                  <td>d****@proton.me</td>
+                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
+                  <td class="credit-plus">+3</td>
+                </tr>
+                <tr data-status="completed">
+                  <td>15/02/2026</td>
+                  <td>p****@gmail.com</td>
+                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
+                  <td class="credit-plus">+3</td>
+                </tr>
+                <tr data-status="completed">
+                  <td>02/02/2026</td>
+                  <td>k****@icloud.com</td>
+                  <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
+                  <td class="credit-plus">+3</td>
+                </tr>
+                <tr data-status="expired">
+                  <td>18/01/2026</td>
+                  <td>j****@gmail.com</td>
+                  <td><span class="badge badge-danger"><i class="fas fa-times"></i> Expired</span></td>
+                  <td style="color: var(--text-muted);">0</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Milestone Progress -->
-        <div class="card animate-in delay-6">
+        <!-- How It Works — compact -->
+        <div class="card" style="margin-bottom:0;">
           <div class="card-header">
-            <i class="fas fa-trophy"></i> Milestone Bonuses
+            <div class="card-header-left"><i class="fas fa-bolt"></i> How It Works</div>
           </div>
-          <div class="card-body">
-            <div class="milestones">
-
-              <div class="milestone">
-                <div class="milestone-icon unlocked"><i class="fas fa-check"></i></div>
-                <div class="milestone-info">
-                  <div class="milestone-title">5 Referrals</div>
-                  <div class="milestone-desc">+3 bonus credits</div>
-                  <div class="milestone-progress-bar">
-                    <div class="milestone-progress-fill done" style="width: 100%"></div>
-                  </div>
+          <div class="card-body" style="padding: 8px 24px 16px;">
+            <div class="how-steps">
+              <div class="how-step">
+                <div class="how-step-num">1</div>
+                <div class="how-step-content">
+                  <div class="how-step-title">Share Your Link</div>
+                  <div class="how-step-desc">Send your unique referral link to colleagues in the entertainment industry.</div>
                 </div>
-                <div class="milestone-badge unlocked">Claimed</div>
               </div>
-
-              <div class="milestone">
-                <div class="milestone-icon next"><i class="fas fa-star"></i></div>
-                <div class="milestone-info">
-                  <div class="milestone-title">10 Referrals</div>
-                  <div class="milestone-desc">+5 bonus credits</div>
-                  <div class="milestone-progress-bar">
-                    <div class="milestone-progress-fill active" style="width: 70%"></div>
-                  </div>
+              <div class="how-step">
+                <div class="how-step-num">2</div>
+                <div class="how-step-content">
+                  <div class="how-step-title">They Sign Up</div>
+                  <div class="how-step-desc">When someone registers using your link, you both earn credits.</div>
+                  <div class="how-step-tag"><i class="fas fa-coins"></i> +1 credit each</div>
                 </div>
-                <div class="milestone-badge next">7 / 10</div>
               </div>
-
-              <div class="milestone">
-                <div class="milestone-icon locked"><i class="fas fa-crown"></i></div>
-                <div class="milestone-info">
-                  <div class="milestone-title">20 Referrals</div>
-                  <div class="milestone-desc">+10 bonus credits</div>
-                  <div class="milestone-progress-bar">
-                    <div class="milestone-progress-fill active" style="width: 35%"></div>
-                  </div>
+              <div class="how-step">
+                <div class="how-step-num">3</div>
+                <div class="how-step-content">
+                  <div class="how-step-title">First Analysis</div>
+                  <div class="how-step-desc">After their first analysis, you earn a bonus.</div>
+                  <div class="how-step-tag"><i class="fas fa-coins"></i> +2 bonus for you</div>
                 </div>
-                <div class="milestone-badge locked">7 / 20</div>
               </div>
-
-              <div class="milestone">
-                <div class="milestone-icon locked"><i class="fas fa-gem"></i></div>
-                <div class="milestone-info">
-                  <div class="milestone-title">50 Referrals</div>
-                  <div class="milestone-desc">Lifetime cap reached — Unlock VIP tier</div>
-                  <div class="milestone-progress-bar">
-                    <div class="milestone-progress-fill active" style="width: 14%"></div>
-                  </div>
-                </div>
-                <div class="milestone-badge locked">7 / 50</div>
-              </div>
-
             </div>
           </div>
         </div>
 
-      </div>
-
-      <!-- Rules (Collapsible) -->
-      <div class="card animate-in delay-6">
-        <div class="rules-toggle" id="rulesToggle" onclick="toggleRules()">
-          <div class="rules-toggle-left">
-            <i class="fas fa-shield-halved"></i> Referral Rules & Limits
-          </div>
-          <i class="fas fa-chevron-down chevron"></i>
-        </div>
-        <div class="rules-content" id="rulesContent">
-          <div class="rules-list">
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-calendar-day"></i></div>
-              <div class="rule-text"><strong>Monthly cap:</strong> Maximum 10 referrals per month to keep things fair.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-infinity"></i></div>
-              <div class="rule-text"><strong>Lifetime cap:</strong> Maximum 50 referrals per account.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-flask"></i></div>
-              <div class="rule-text"><strong>Qualification:</strong> Referred user must complete at least 1 analysis for you to earn the +2 bonus.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-fingerprint"></i></div>
-              <div class="rule-text"><strong>Unique invites:</strong> Each person can only be referred once, no duplicate emails.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-ban"></i></div>
-              <div class="rule-text"><strong>No self-referrals:</strong> You cannot use your own referral link.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-hourglass-half"></i></div>
-              <div class="rule-text"><strong>Link expiry:</strong> Referral links are valid for 30 days after generation.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-user-plus"></i></div>
-              <div class="rule-text"><strong>New users only:</strong> Referral links work only for new account sign-ups.</div>
-            </div>
-            <div class="rule-item">
-              <div class="rule-icon"><i class="fas fa-gavel"></i></div>
-              <div class="rule-text"><strong>Abuse policy:</strong> RecoBee reserves the right to revoke credits for fraudulent activity.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Referral History -->
-      <div class="card animate-in delay-7">
-        <div class="card-header">
-          <i class="fas fa-clock-rotate-left"></i> Referral History
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Referred User</th>
-                <th>Status</th>
-                <th>Your Credits</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>15/03/2026</td>
-                <td>a****@gmail.com</td>
-                <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td>
-                <td class="credit-plus">+1</td>
-              </tr>
-              <tr>
-                <td>12/03/2026</td>
-                <td>r****@outlook.com</td>
-                <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Pending</span></td>
-                <td class="credit-plus">+1</td>
-              </tr>
-              <tr>
-                <td>08/03/2026</td>
-                <td>s****@yahoo.com</td>
-                <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                <td class="credit-plus">+3</td>
-              </tr>
-              <tr>
-                <td>01/03/2026</td>
-                <td>m****@gmail.com</td>
-                <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                <td class="credit-plus">+3</td>
-              </tr>
-              <tr>
-                <td>22/02/2026</td>
-                <td>d****@proton.me</td>
-                <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                <td class="credit-plus">+3</td>
-              </tr>
-              <tr>
-                <td>15/02/2026</td>
-                <td>p****@gmail.com</td>
-                <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                <td class="credit-plus">+3</td>
-              </tr>
-              <tr>
-                <td>02/02/2026</td>
-                <td>k****@icloud.com</td>
-                <td><span class="badge badge-success"><i class="fas fa-check"></i> Completed</span></td>
-                <td class="credit-plus">+3</td>
-              </tr>
-              <tr>
-                <td>18/01/2026</td>
-                <td>j****@gmail.com</td>
-                <td><span class="badge badge-danger"><i class="fas fa-times"></i> Expired</span></td>
-                <td style="color: var(--text-muted);">0</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Toast Notification -->
+  <!-- Toast -->
   <div class="toast" id="toast">
     <i class="fas fa-check-circle"></i>
     <span id="toastMsg">Link copied to clipboard!</span>
@@ -1051,8 +735,8 @@
   <script>
     // Copy referral link
     function copyLink() {
-      const input = document.getElementById('referralLink');
-      navigator.clipboard.writeText(input.value).then(() => {
+      const link = 'https://recobee.ai/r/RB-DEM0-7X9K';
+      navigator.clipboard.writeText(link).then(() => {
         const btn = document.getElementById('copyBtn');
         btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
         btn.classList.add('copied');
@@ -1064,6 +748,20 @@
       });
     }
 
+    // Share dropdown
+    function toggleShare() {
+      const dd = document.getElementById('shareDropdown');
+      dd.classList.toggle('open');
+    }
+
+    // Close share dropdown on outside click
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('shareDropdown');
+      if (!e.target.closest('.share-dropdown-wrap')) {
+        dd.classList.remove('open');
+      }
+    });
+
     // Share functions
     const referralLink = 'https://recobee.ai/r/RB-DEM0-7X9K';
     const shareText = 'Check out RecoBee — AI-powered content analysis for scripts, trailers, reels & more. Sign up with my link and we both get free credits!';
@@ -1072,28 +770,35 @@
       e.preventDefault();
       window.open(`https://wa.me/?text=${encodeURIComponent(shareText + '\n\n' + referralLink)}`, '_blank');
     }
-
     function shareEmail(e) {
       e.preventDefault();
       window.open(`mailto:?subject=${encodeURIComponent('Try RecoBee — Free Credits Inside')}&body=${encodeURIComponent(shareText + '\n\n' + referralLink)}`, '_blank');
     }
-
     function shareTwitter(e) {
       e.preventDefault();
       window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(referralLink)}`, '_blank');
     }
-
     function shareLinkedIn(e) {
       e.preventDefault();
       window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(referralLink)}`, '_blank');
     }
 
-    // Toggle rules
-    function toggleRules() {
-      const toggle = document.getElementById('rulesToggle');
-      const content = document.getElementById('rulesContent');
-      toggle.classList.toggle('open');
-      content.classList.toggle('open');
+    // History filter
+    function filterHistory(status, btn) {
+      // Update active tab
+      document.querySelectorAll('.header-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const rows = document.querySelectorAll('#historyTable tbody tr');
+      rows.forEach(row => {
+        if (status === 'all') {
+          row.style.display = '';
+        } else if (status === 'completed') {
+          row.style.display = row.dataset.status === 'completed' ? '' : 'none';
+        } else if (status === 'pending') {
+          row.style.display = (row.dataset.status === 'pending') ? '' : 'none';
+        }
+      });
     }
 
     // Toast
